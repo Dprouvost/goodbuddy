@@ -10,81 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_140721) do
+ActiveRecord::Schema.define(version: 2019_03_05_161741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contacts", force: :cascade do |t|
-    t.bigint "users_id"
+  create_table "categories", force: :cascade do |t|
+    t.string "code"
+    t.string "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "contacts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contacts_id"], name: "index_contacts_on_contacts_id"
     t.index ["users_id"], name: "index_contacts_on_users_id"
   end
 
   create_table "goals", force: :cascade do |t|
     t.string "code"
     t.string "label"
-    t.bigint "goals_compatibilities_id"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goals_compatibilities_id"], name: "index_goals_on_goals_compatibilities_id"
-  end
-
-  create_table "goals_compatibilities", force: :cascade do |t|
-    t.bigint "users_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_goals_compatibilities_on_users_id"
   end
 
   create_table "profiles", force: :cascade do |t|
     t.string "nickname"
     t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "socials_categories", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
-    t.bigint "socials_choices_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["socials_choices_id"], name: "index_socials_categories_on_socials_choices_id"
-  end
-
-  create_table "socials_choices", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
-    t.bigint "socials_compatibilities_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["socials_compatibilities_id"], name: "index_socials_choices_on_socials_compatibilities_id"
-  end
-
-  create_table "socials_compatibilities", force: :cascade do |t|
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_socials_compatibilities_on_users_id"
+    t.index ["users_id"], name: "index_profiles_on_users_id"
   end
 
-  create_table "technicals_choices", force: :cascade do |t|
+  create_table "socials", force: :cascade do |t|
     t.string "code"
     t.string "label"
-    t.bigint "technicals_compatibilities_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["technicals_compatibilities_id"], name: "index_technicals_choices_on_technicals_compatibilities_id"
+    t.index ["category_id"], name: "index_socials_on_category_id"
   end
 
-  create_table "technicals_compatibilities", force: :cascade do |t|
+  create_table "technicals", force: :cascade do |t|
+    t.string "code"
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_goals", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_user_goals_on_goal_id"
+    t.index ["user_id"], name: "index_user_goals_on_user_id"
+  end
+
+  create_table "user_socials", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "social_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_id"], name: "index_user_socials_on_social_id"
+    t.index ["user_id"], name: "index_user_socials_on_user_id"
+  end
+
+  create_table "user_technicals", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "technical_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "metric"
-    t.bigint "users_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_technicals_compatibilities_on_users_id"
+    t.index ["technical_id"], name: "index_user_technicals_on_technical_id"
+    t.index ["user_id"], name: "index_user_technicals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,12 +104,14 @@ ActiveRecord::Schema.define(version: 2019_03_05_140721) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contacts", "users", column: "contacts_id"
   add_foreign_key "contacts", "users", column: "users_id"
-  add_foreign_key "goals", "goals_compatibilities", column: "goals_compatibilities_id"
-  add_foreign_key "goals_compatibilities", "users", column: "users_id"
-  add_foreign_key "socials_categories", "socials_choices", column: "socials_choices_id"
-  add_foreign_key "socials_choices", "socials_compatibilities", column: "socials_compatibilities_id"
-  add_foreign_key "socials_compatibilities", "users", column: "users_id"
-  add_foreign_key "technicals_choices", "technicals_compatibilities", column: "technicals_compatibilities_id"
-  add_foreign_key "technicals_compatibilities", "users", column: "users_id"
+  add_foreign_key "profiles", "users", column: "users_id"
+  add_foreign_key "socials", "categories"
+  add_foreign_key "user_goals", "goals"
+  add_foreign_key "user_goals", "users"
+  add_foreign_key "user_socials", "socials"
+  add_foreign_key "user_socials", "users"
+  add_foreign_key "user_technicals", "technicals"
+  add_foreign_key "user_technicals", "users"
 end
