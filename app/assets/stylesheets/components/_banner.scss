@@ -1,0 +1,38 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 35vh 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.banner p {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 300;
+  letter-spacing: 1px;
+
+}
+
+.button {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-size: 22px;
+}
+
+.log-here {
+  font-size: 12px !important;
+}

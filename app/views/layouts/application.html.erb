@@ -13,30 +13,37 @@
     <div class="navbar bg-white py-3 px-4">
       <i class="fas fa-smile"></i>
       <div class="nav-bar-right d-flex align-items-center">
-        <%= link_to "Profile", "#", class: "px-3 d-none d-sm-block" %>
-        <%= link_to "Dashboard", "#", class: "px-3 d-none d-sm-block" %>
-        <%= link_to "Login", "#", class: "px-3 d-none d-sm-block" %>
+        <%# if user is not connected --> show login signin buttons %>
+        <%= link_to "Sign up", new_user_registration_path, class: "px-3 d-none d-sm-block" %>
+        <%= link_to "Login", new_user_session_path, class: "px-3 d-none d-sm-block" %>
+
+        <%# if user is connected --> show dropdown menu %>
         <div class="dropdown  d-none d-sm-block">
-          <%= image_tag "http://www.placehold.it/40x40", class: "rounded-circle px-3", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
+          <%= image_tag "http://www.placehold.it/40x40", class: "rounded-circle px-3 zoom-avatar", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Something else here", "#", class: "dropdown-item" %>
+            <%= link_to "Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", "#", class: "dropdown-item" %>
+            <%= link_to "Suggested box", "#", class: "dropdown-item" %>
+            <%= link_to "Contact us", "#", class: "dropdown-item" %>
           </div>
         </div>
       </div>
-      <div class="dropdown burger d-block d-sm-none">
-        <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <%= link_to "Action", "#", class: "dropdown-item" %>
-        <%= link_to "Another action", "#", class: "dropdown-item" %>
-        <%= link_to "Something else here", "#", class: "dropdown-item" %>
+    </div>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
       </div>
     </div>
-    </div>
-
-      <%= render 'shared/flashes' %>
-    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
