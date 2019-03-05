@@ -1,3 +1,3 @@
 class Goal < ApplicationRecord
-  belongs_to :goals_compatibility
+  has_one :user, through: :user_goals
 end
