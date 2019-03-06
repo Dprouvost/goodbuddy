@@ -7,7 +7,7 @@
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: #43CEA2;
   font-size: 42px;
   font-weight: bold;
   text-align: center;
@@ -23,16 +23,34 @@
   vertical-align: middle;
   font-weight: 300;
   letter-spacing: 1px;
+  margin-bottom: 20px;
 
 }
 
 .button {
   background-color: white;
-  border-radius: 10px;
-  padding: 10px 40px;
+  border-radius: 30px;
+  padding: 5px 40px;
   font-size: 22px;
+  font-weight: bold;
+  margin-bottom: -5px;
 }
 
-.log-here {
+.button:hover {
+  background-color:#43CEA2; 
+  color: white;
+}
+
+.banner-login {
   font-size: 12px !important;
+  font-weight: 300 !important;
+}
+
+.banner-login1 {
+  text-decoration: none !important;
+  color: #43CEA2;
+}
+
+.banner-login1:hover {
+  color: #43CEA2;
 }

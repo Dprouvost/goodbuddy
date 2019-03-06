@@ -1,9 +1,8 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>Strong Together</h1>
-    <p>Meet buddies that codes like you.</p>
+  <div class="container font-banner">
+    <h1><span id="banner-typed-text"></span></h1>
+    <p>Meet buddies that code like you.</p>
     <p><a class="btn btn-flat button" href="#">Join for free</a></p>
-    <p class="log-here">Already on Oasis? <a>Login here.</a></p> 
+    <p class="banner-login">Already on GoodBuddy? <%= link_to "Login here", new_user_session_path, class:"banner-login1" %></p> 
   </div>
-
 </div>
