@@ -10,86 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_161741) do
+ActiveRecord::Schema.define(version: 2019_03_06_161011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
+    t.string "name"
+    t.string "stamp"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categories_on_category_id"
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "contacts_id"
+  create_table "profile_cats", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contacts_id"], name: "index_contacts_on_contacts_id"
-    t.index ["users_id"], name: "index_contacts_on_users_id"
-  end
-
-  create_table "goals", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_profile_cats_on_category_id"
+    t.index ["profile_id"], name: "index_profile_cats_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
     t.string "nickname"
     t.string "picture"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_profiles_on_users_id"
-  end
-
-  create_table "socials", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_socials_on_category_id"
+    t.string "location"
+    t.text "description"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "technicals", force: :cascade do |t|
-    t.string "code"
-    t.string "label"
+    t.bigint "profile_id"
+    t.string "language_1"
+    t.string "language_2"
+    t.string "language_3"
+    t.integer "commit_slot"
+    t.integer "github_age"
+    t.integer "number_of_projects"
+    t.integer "total_commits"
+    t.integer "followers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_goals", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "goal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["goal_id"], name: "index_user_goals_on_goal_id"
-    t.index ["user_id"], name: "index_user_goals_on_user_id"
-  end
-
-  create_table "user_socials", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "social_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["social_id"], name: "index_user_socials_on_social_id"
-    t.index ["user_id"], name: "index_user_socials_on_user_id"
-  end
-
-  create_table "user_technicals", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "technical_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "metric"
-    t.index ["technical_id"], name: "index_user_technicals_on_technical_id"
-    t.index ["user_id"], name: "index_user_technicals_on_user_id"
+    t.index ["profile_id"], name: "index_technicals_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,14 +71,21 @@ ActiveRecord::Schema.define(version: 2019_03_05_161741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "contacts", "users", column: "contacts_id"
-  add_foreign_key "contacts", "users", column: "users_id"
-  add_foreign_key "profiles", "users", column: "users_id"
-  add_foreign_key "socials", "categories"
-  add_foreign_key "user_goals", "goals"
-  add_foreign_key "user_goals", "users"
-  add_foreign_key "user_socials", "socials"
-  add_foreign_key "user_socials", "users"
-  add_foreign_key "user_technicals", "technicals"
-  add_foreign_key "user_technicals", "users"
+  create_table "weightings", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.float "social"
+    t.float "language"
+    t.float "style"
+    t.float "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_weightings_on_profile_id"
+  end
+
+  add_foreign_key "categories", "categories"
+  add_foreign_key "profile_cats", "categories"
+  add_foreign_key "profile_cats", "profiles"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "technicals", "profiles"
+  add_foreign_key "weightings", "profiles"
 end
