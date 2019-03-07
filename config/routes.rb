@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'callback' }
+
   root to: 'pages#home'
   resources :profiles, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :categories, only: [ :new, :create, :show] 
