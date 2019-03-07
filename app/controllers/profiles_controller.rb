@@ -91,34 +91,34 @@ class ProfilesController < ApplicationController
   end
 
   def github_age_score 
-    profiles.commun_goal.all.github_age.each do |profile|
-      score_1 = ((current_profile.technicals.github_age - profile.technicals.github_age).abs)
-    end
-    profiles.commun_goal.all.github_age.each do |profile|  
-    score_2 = (1 - (score_1/score_1_array.max)) x 100
-    
-    end
+    # profiles.commun_goal.all.github_age.each do |profile|
+    #   score_1 = ((current_profile.technicals.github_age - profile.technicals.github_age).abs)
+    # end
+    # profiles.commun_goal.all.github_age.each do |profile|  
+    # score_2 = (1 - (score_1/score_1_array.max)) x 100
+
+    # end
   end
 
  
 #________________________________________________________________________________________________________________________________
 
   def index
-    @profiles = Profile.all
+    # @profiles = Profile.all
     # afficher les profiles dans l'ordre de matching score décroissant (sauf le current_profile)
   end
 
   def new
-    @profile = Profile.new
+    # @profile = Profile.new
   end
 
   def create
-    @profile = Profile.new(params_profile)
-    if @profile.save
-      redirect_to root_path #mettre la route de la roue
-    else
-      render :new
-    end
+    # @profile = Profile.new(params_profile)
+    # if @profile.save
+    #   redirect_to root_path #mettre la route de la roue
+    # else
+    #   render :new
+    # end
   end
 
   def edit
@@ -134,11 +134,11 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(@:rofile).permit(:nickname, :picture, :location, :description)
+      # params.require(@:rofile).permit(:nickname, :picture, :location, :description)
     end
 
     def set_profile
-      @profile = Profile.find(params[:id])
+      # @profile = Profile.find(params[:id])
     end
 
 end
