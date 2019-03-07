@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :categories, only: [ :new, :create, :show] 
     resources :weightings, only: [ :new, :create ]
-    resources :categories, only: [ :new, :create, :show ]
+    resources :technicals, only: [ :new, :create, :show ]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
