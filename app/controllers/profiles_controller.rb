@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    # @profile = Profile.new(params_profile)
+    # @profile = Profile.new(profile_settings)
     # if @profile.save
     #   redirect_to root_path #mettre la route de la roue
     # else
@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    
   end
 
   def show
@@ -31,7 +32,7 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      # params.require(@:rofile).permit(:nickname, :picture, :location, :description)
+      # params.require(@profile).permit(:nickname, :picture, :location, :description)
     end
 
     def set_profile
