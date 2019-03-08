@@ -6,12 +6,13 @@ class PagesController < ApplicationController
 
   def select_goals
     @categories = Category.where(stamp: 'goal')
-    @profile = Profile.find(3)
-    # @profile = Profile.find_by(user: current_user)
+    @profile = current_user.profile
+    # @profile = Profile.find(params["id"])
   end
 
   def select_w
-    @profile = Profile.find(params["id"])
+    # @profile = Profile.find(params["id"])
+    @profile = current_user.profile
     @profile.categories = params["goals"]["categories"]
       .split(",")
       .reject(&:empty?) #arr.reject { |item| item.empty? }
