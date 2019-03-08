@@ -1,7 +1,7 @@
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
-import { button } from '../components/category';
-button();
+import { buttons } from '../components/category';
+buttons();
 // import { form } from '../components/category';
 // form();
