@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="goals-title">
+    <h1>Select your goals?</h1>
+  </div>
+  <div class="goals-list">
+    <% @categories.each do |category| %>
+      <span>
+        <h4 class="goals-unselected btn clickme" data-markers="<%= category.id %>"><%=category.name.capitalize %></h4>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="description-title">
+    <h1>Tell us more about you</h1>
+  </div>
+
+  <div class="description-content">
+    <%= simple_form_for @profile, url: select_w_path do |f| %>
+    <input type="hidden" name="id" value="<%=@profile.id%>">
+      <%= f.input :description, label: false%>
+      <input type="hidden" name="goals[categories]" value="" id="goals-input">
+      <%= f.button :submit, label: 'Next', class:"submit-goals" %> 
+    <% end %>
+  </div>
+</div>
