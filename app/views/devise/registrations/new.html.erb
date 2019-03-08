@@ -22,11 +22,13 @@
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %> -->
-  <div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="150" height="150" alt="">
-</div>
-<div>
-  <%= link_to "Sign Up with GitHub", user_github_omniauth_authorize_path, class:"btn btn-primary" %>
-</div>
+  <div class="card text-center">
+    <div class="card-body">
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="150" height="150" alt=""> </p>
+      <h3 class="card-title"> <strong> GitHub ? Why ? </strong> </h3>
+      <p class="card-text"> We will use your public repositories to analyze your style and give you <strong> the most relevant matches </strong> according to your profile!</p>
+      <p> <%= link_to "Sign Up with GitHub", user_github_omniauth_authorize_path, class:"btn btn-flat button" %> </p>
+    </div>
+  </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

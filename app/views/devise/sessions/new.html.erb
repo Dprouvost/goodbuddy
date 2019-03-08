@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Log in with GitHub</h1>
+  <h1>Log In with GitHub</h1>
 
   <!-- <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -17,10 +17,14 @@
       <%= f.button :submit, "Log in" %>
     </div>
   <% end %> -->
-  <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="150" height="150" alt="">
-  </div>
-  <div>
-    <%= link_to "Log in with GitHub", user_github_omniauth_authorize_path, class:"btn btn-primary" %>
+
+  <div class="card text-center">
+    <div class="card-body">
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="150" height="150" alt=""> </p>
+      <h3 class="card-title"> <strong> Welcome back !</strong> </h3>
+      <p class="card-text"> Ready to get <strong> the most relevant matches ? </strong> Here we go ! </p>
+      <p> <%= link_to "Log In with GitHub", user_github_omniauth_authorize_path, class:"btn btn-flat button" %> </p>
     </div>
+  </div>
 </div>
+
