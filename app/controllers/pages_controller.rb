@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   def home
   end
 
+  def choose_pictures
+    # @categories = Category.where(stamp: 'goal')
+    # @profile = Profile.find(3)
+  end
+
   def select_goals
     @categories = Category.where(stamp: 'goal')
     @profile = Profile.find(3)
