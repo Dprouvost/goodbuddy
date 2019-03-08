@@ -1,2 +1,3 @@
 class WeightingsController < ApplicationController
+
 end
