@@ -25,23 +25,78 @@ t_profile = Profile.create!(nickname: "Theo", picture: "https://media.licdn.com/
 a_user = User.create!(email: "Antho@github.com", password: "123456")
 a_profile = Profile.create!(nickname: "Antho", picture: "https://media.licdn.com/dms/image/C5603AQHu4lKzjy4a7Q/profile-displayphoto-shrink_200_200/0?e=1557360000&v=beta&t=6JOjfGLKCkVk3m1xsRjlwbVxhVeh22HuCIjyf3vDk2o", user_id: a_user.id, location: "tournai", description: "Je cherche à comprendre")
 
-puts "Users and profiles created - Creating Categories "
+puts "Users and profiles created - Creating Categories"
 
-r_c = Category.create!(name: "music", stamp: "social")
-r_sc = Category.create!(name: "house", stamp: "social", category_id: r_c.id)
-r_profile.categories << r_sc
+socials_array = [
+  {
+    name: 'music',
+    sub_cats: ['rock', 'house']
+  },
+  {
+    name: 'movie',
+    sub_cats: ['cinema', 'netflix']
+  },
+  {
+    name: 'food',
+    sub_cats: ['junk', 'healthy']
+  },
+  {
+    name: 'desk',
+    sub_cats: ['clean', 'dirty']
+  }
+]
 
-d_c = Category.create!(name: "music", stamp: "social")
-d_sc = Category.create!(name: "metal", stamp: "social", category_id: d_c.id)
-d_profile.categories << d_sc
+socials_array.each do |social|
+  main_cat = Category.create!(name: social[:name], stamp: 'social')
+  social[:sub_cats].each do |sc|
+    Category.create!(name: sc, stamp: 'social', category: main_cat)
+  end
+  Profile.all.each do |p|
+    p.categories << main_cat.categories.sample
+  end
+end
 
-t_c = Category.create!(name: "music", stamp: "social")
-t_sc = Category.create!(name: "metal", stamp: "social", category_id: t_c.id)
-t_profile.categories << t_sc
+goals = [
+  'gaming',
+  'virtual reality',
+  'transportation',
+  'finance'
+]
 
-a_c = Category.create!(name: "music", stamp: "social")
-a_sc = Category.create!(name: "house", stamp: "social", category_id: a_c.id)
-a_profile.categories << a_sc
+goals.each { |g| Category.create!(name: g, stamp: 'goal') }
+
+Profile.all.each do |p|
+  Category.where(stamp: 'goal').sample(3).each { |c| p.categories << c }
+end
+
+# music = Category.create!(name: "music", stamp: "social")
+# music_type = Category.create!(name: "house", stamp: "social", category_id: music.id)
+
+# stamp = Category.create!(name: "", stamp: "goal")
+# r_scg = Category.create!(name: "gaming", stamp: "goal", category_id: r_cg.id)
+# r_profile.categories << r_sc
+# r_profile.categories << r_scg
+
+# d_c = Category.create!(name: "music", stamp: "social")
+# d_sc = Category.create!(name: "metal", stamp: "social", category_id: d_c.id)
+# d_cg = Category.create!(name: "", stamp: "goal")
+# d_scg = Category.create!(name: "gaming", stamp: "goal", category_id: d_cg.id)
+# d_profile.categories << d_sc
+# d_profile.categories << d_scg
+
+# t_c = Category.create!(name: "music", stamp: "social")
+# t_sc = Category.create!(name: "metal", stamp: "social", category_id: t_c.id)
+# t_cg = Category.create!(name: "", stamp: "goal")
+# t_scg = Category.create!(name: "transportation", stamp: "goal", category_id: t_cg.id)
+# t_profile.categories << t_sc
+# t_profile.categories << t_scg
+
+# a_c = Category.create!(name: "music", stamp: "social")
+# a_sc = Category.create!(name: "house", stamp: "social", category_id: a_c.id)
+# a_cg = Category.create!(name: "", stamp: "goal")
+# a_scg = Category.create!(name: "gaming", stamp: "goal", category_id: a_cg.id)
+# a_profile.categories << a_sc
+# a_profile.categories << a_scg
 
 
 puts "Categories created - Creating technicals and weightings "
