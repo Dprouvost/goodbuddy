@@ -4,8 +4,9 @@
   </div>
   <div class="goals-list">
     <% @categories.each do |category| %>
-      <div data-markers="<%= @categories.name %>"></div>
-      <h4 class="goals-unselected btn clickme" ><%=category.name.capitalize %></h4>
+      <span>
+        <h4 class="goals-unselected btn clickme" data-markers="<%= category.id %>"><%=category.name.capitalize %></h4>
+      </span>
     <% end %>
   </div>
 
@@ -14,7 +15,8 @@
   </div>
 
   <div class="description-content">
-    <%= simple_form_for @profile do |f| %>
+    <%= simple_form_for @profile, url: select_w_path do |f| %>
+    <input type="hidden" name="id" value="<%=@profile.id%>">
       <%= f.input :description, label: false%>
       <input type="hidden" name="goals[categories]" value="" id="goals-input">
       <%= f.button :submit, label: 'Next', class:"submit-goals" %> 
