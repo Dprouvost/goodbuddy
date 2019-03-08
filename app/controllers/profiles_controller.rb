@@ -26,11 +26,12 @@ class ProfilesController < ApplicationController
       ((profile.categories.include?(current_goals).count)/(current_goals.count))/100
     end
   end
-  
+
   def score_social
   # Objectif: definir un score_social en fonction du nombre de socials en commun
     # 1- Pour chaque profile, calculer un score_social, comme ci dessous:
       # score_social = (nombre de social.label en communs avec le current_profile / nombre total de social.label) x 100
+
     current_socials = []
     current_socials << current_user.profile.categories.where(stamp: 'social')
     commun_goals_profile_sample.each do |profile|
@@ -39,7 +40,11 @@ class ProfilesController < ApplicationController
   end
 
   def score_language
+
+
   # Objectif: definir un score_language en fonction du nombre de language en commun mais aussi de leur ordre
+  currentUserLanguages = ["L1","L2","L3"]
+  otherUsersLanguages = [["L1","L2","L3"],["L2","L1","L3"],["L4","L2","L1"],["L3","L2","L1"]]
 
     # 1- Créer le hash/array_language du current_profile avec ses 3 languages favoris via l'API de github, 3 clés : language_1, language_2 et language_3
 
@@ -64,7 +69,7 @@ class ProfilesController < ApplicationController
       # if l3 = l3, score_l3 = 0.8
       # else score_l3 = 0
     # score_language = ((score_l1 + score_l2 + score_l3) / max_score) x 100
-    
+
   end
 
   def score_style
@@ -95,17 +100,17 @@ class ProfilesController < ApplicationController
       # experience_score = (github_age_score + number_of_projects_score + total_commits_score + followers_score) / 4
   end
 
-  def github_age_score 
+  def github_age_score
     # profiles.commun_goal.all.github_age.each do |profile|
     #   score_1 = ((current_profile.technicals.github_age - profile.technicals.github_age).abs)
     # end
-    # profiles.commun_goal.all.github_age.each do |profile|  
+    # profiles.commun_goal.all.github_age.each do |profile|
     # score_2 = (1 - (score_1/score_1_array.max)) x 100
 
     # end
   end
 
- 
+
 #________________________________________________________________________________________________________________________________
 
   def index
