@@ -4,22 +4,37 @@ require 'open-uri'
 # GithubGetterService.get_name(userid)
 
 class GithubGetterService
-  def get_name(userid)
-    url = "https://api.github.com/users/" << userid
-    user_serialized = open(url).read
-    user = JSON.parse(user_serialized)
-    return user['name']
+  def initialize(nickname)
+    @nickname = nickname
+    @base_url = "https://api.github.com/users/" << @nickname
+    @languages = nil
   end
 
-  def get_age(userid)
-    url = "https://api.github.com/users/" << userid
-    user_serialized = open(url).read
-    user = JSON.parse(user_serialized)
-    return Date.today.mjd - DateTime.parse(user['created_at']).to_date.mjd
+  def call
+    url = @base_url
+    user_data = open(url).read
+    user = JSON.parse(user_data)
+    @languages = get_languages
+    return {
+      profile: {
+        nickname: @nickname,
+        picture: user["avatar_url"]
+      },
+      technicals: {
+        language_1: @languages[:language_1],
+        language_2: @languages[:language_2],
+        language_3: @languages[:language_3],
+        commit_slot: get_commit_slot,
+        github_age: Date.today.mjd - DateTime.parse(user['created_at']).to_date.mjd,
+        number_of_projects: user['public_repos'],
+        total_commits: get_total_commits,
+        followers: user['followers'],
+      }
+    }
   end
 
-  def get_languages(userid)
-    url = "https://api.github.com/users/" << userid << "/repos?per_page=100"
+  def get_languages
+    url = @base_url << "/repos?per_page=100"
     user_serialized = open(url).read
     details = JSON.parse(user_serialized)
     languages_array = []
@@ -27,11 +42,19 @@ class GithubGetterService
     counts_hash = Hash.new(0)
     languages_array.each { |name| counts_hash[name] += 1 }
     array1 = counts_hash.sort_by {|_key, value| -value }
-    return [array1[0][0], array1[1][0], array1[2][0]]
+    @languages = language_formater(array1)
   end
 
-  def get_commit_slot(userid)
-    url = "https://api.github.com/users/" << userid << "/events?per_page=100"
+  def language_formater(arr)
+    {
+      language_1: arr[0] ? arr[0][0] : nil,
+      language_2: arr[1] ? arr[1][0] : nil,
+      language_3: arr[2] ? arr[2][0] : nil,
+    }
+  end
+
+  def get_commit_slot
+    url = @base_url << "/events?per_page=100"
     user_serialized = open(url).read
     details = JSON.parse(user_serialized)
     slot_array = []
@@ -54,8 +77,8 @@ class GithubGetterService
     return counts.first[0]
   end
 
-  def get_total_commits(userid)
-    url = "https://api.github.com/users/" << userid << "/events?per_page=100"
+  def get_total_commits
+    url = @base_url << "/events?per_page=100"
     user_serialized = open(url).read
     details = JSON.parse(user_serialized)
     push_count = 0
@@ -63,19 +86,5 @@ class GithubGetterService
       push_count += 1 if event['type'] != "PushEvent" || event['type'] == "PullRequestEvent"
     end
     return push_count
-  end
-
-  def get_followers(userid)
-    url = "https://api.github.com/users/" << userid
-    user_serialized = open(url).read
-    user = JSON.parse(user_serialized)
-    return user['followers']
-  end
-
-  def get_number_of_projects(userid)
-    url = "https://api.github.com/users/" << userid
-    user_serialized = open(url).read
-    user = JSON.parse(user_serialized)
-    return user['public_repos']
   end
 end
