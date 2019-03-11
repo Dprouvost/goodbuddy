@@ -11,10 +11,6 @@ buttons.forEach((button) => {
     let ids = document.getElementById("goals-input").value.split(",");
     ids.push(id);
     document.getElementById("goals-input").value = ids.join(",")
-//     // recup la category name depuis eventcurrenttarget 
-//     // assig 
-
-
   });
 });
 export { buttons };
