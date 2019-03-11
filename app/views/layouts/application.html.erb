@@ -20,7 +20,8 @@
           <%= link_to "Login", new_user_session_path, class: "px-3 d-none d-sm-block navbar-font" %>
         <% else %>
           <div class="dropdown  d-none d-sm-block">
-            <%= image_tag "http://www.placehold.it/40x40", class: "rounded-circle px-3 zoom-avatar", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
+          <% picture = current_user.picture_url %>
+            <%= image_tag picture, class: "circle-img rounded-circle px-3 zoom-avatar", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <%= link_to "Profile", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -34,7 +35,7 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
 
-    <div class="footer row">
+    <div class="footer">
       <div class="footer-links" class="col-sm-12">
         <a href="#"><i class="fab fa-github"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>

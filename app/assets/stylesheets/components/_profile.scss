@@ -1,0 +1,46 @@
+.profile-border {
+  background-color: white;
+  border-radius: 10px;
+  // display: block !important;
+  width: 100%;
+  margin: 20px;
+  padding: 30px !important;
+  box-shadow: 0px 1px 1px;
+}
+
+.profile-avatar img {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.profile-border-bar {
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.profile-list-line {
+  width: 50%;
+}
+
+#profile-send-message {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#profile-send-message button {
+  border: 1px solid black;
+  border-radius: 40px;
+  font-size: 24px;
+  padding: 5px 20px;
+
+}
+
+#profile-send-message button:hover {
+  border: solid 1px #5ECEA2;
+}
+
+.width-bar {
+  height: 25px;
+  font-weight: 100;
+  letter-spacing: 1px;
+}

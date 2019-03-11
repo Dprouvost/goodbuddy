@@ -16,6 +16,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-github' 
 gem 'figaro'
+gem 'select2-rails'
 
 
 group :development do

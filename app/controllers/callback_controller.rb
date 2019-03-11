@@ -3,6 +3,6 @@ class CallbackController < Devise::OmniauthCallbacksController
         @user = User.from_omniauth(request.env["omniauth.auth"])
         p @user.errors.messages
         sign_in @user
-        redirect_to '/choose-pictures'
+        redirect_to '/location'
     end
 end

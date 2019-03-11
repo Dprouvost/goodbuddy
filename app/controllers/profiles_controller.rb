@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
 
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
   def index
     @profiles_id = ScoreMatchingService.new(social_weight: 2, style_weight: 2, language_weight: 2, experience_weight: 2, current_user: current_user).call
     @profiles = @profiles_id.map do |element|
@@ -10,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    # @profile = Profile.new
+    @profile = Profile.new
   end
 
   def create
@@ -23,7 +25,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    
+    @profile = Profile.find(params[:id])
   end
 
   def show
@@ -31,16 +33,19 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
+    redirect_to select_goals
   end
 
   private
 
     def profile_params
-      # params.require(@profile).permit(:nickname, :picture, :location, :description)
+      params.require(@profile).permit(:nickname, :picture, :location, :description)
     end
 
     def set_profile
-      # @profile = Profile.find(params[:id])
+      @profile = Profile.find(params[:id])
     end
 
 end
