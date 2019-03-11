@@ -1,12 +1,14 @@
 class ProfilesController < ApplicationController
 
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
   def index
     # @profiles = Profile.all
     # afficher les profiles dans l'ordre de matching score décroissant (sauf le current_profile)
   end
 
   def new
-    # @profile = Profile.new
+    @profile = Profile.new
   end
 
   def create
@@ -19,7 +21,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    
+    @profile = Profile.find(params[:id])
   end
 
   def show
@@ -27,16 +29,19 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
+    redirect_to select_goals
   end
 
   private
 
     def profile_params
-      # params.require(@profile).permit(:nickname, :picture, :location, :description)
+      params.require(@profile).permit(:nickname, :picture, :location, :description)
     end
 
     def set_profile
-      # @profile = Profile.find(params[:id])
+      @profile = Profile.find(params[:id])
     end
 
 end

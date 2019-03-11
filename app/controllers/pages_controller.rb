@@ -4,7 +4,18 @@ class PagesController < ApplicationController
   def home
   end
 
+  def location 
+    @profile = current_user.profile
+  end 
+
+  # def select_location
+    
+  # end
+
   def choose_pictures
+    @profile = current_user.profile
+    @profile.location = params["profile"]["location"]
+    @profile.save
     # @categories = Category.where(stamp: 'goal')
     # @profile = Profile.find(3)
   end
@@ -30,4 +41,7 @@ class PagesController < ApplicationController
     @profile.description = params["profile"]["description"]
     @profile.save
   end
+
+  
+
 end
