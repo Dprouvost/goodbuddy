@@ -1,0 +1,118 @@
+.x-profiles-found-title {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  font-size: 30px;
+}
+
+#align-all-div {
+  display: block !important;
+  width: 60%;
+}
+
+.card-list-border {
+  margin-top: 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0px 1px 1px;
+}
+
+.profile-position {
+  position: relative;
+}
+
+.inline-div {
+  display: inline-block;
+
+}
+
+.list-avatar img {
+  border-radius: 50%;
+  margin: 20px;
+  width: 100px;
+}
+
+.list-username {
+  position: absolute;
+  top: 30px;
+}
+
+.list-username h3 {
+  font-size: 30px;
+}
+
+.list-username p {
+  font-size: 20px;
+}
+
+.position-score {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.list-score {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: auto;
+  // border-left: 4px solid #3EC8AC;
+  // border-right: 4px solid #4E90A4;
+  // border-top: 4px solid #3EC8AC;
+  // border-bottom: 4px solid #4E90A4;
+  // border-radius: 5px;
+  // -webkit-box-sizing: border-box;
+  // -moz-box-sizing: border-box;
+  // box-sizing: border-box;
+  // background-position: 0 0, 0 100%;
+  // background-repeat: no-repeat;
+  // background-image: -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+  // background-image: -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+  color: white;
+  background: -webkit-linear-gradient(#3EC8AC, #4E90A4);
+}
+
+
+  .list-score h4 {
+  position: relative;
+  margin-bottom: 0px !important;
+  top: 20px;
+}
+
+.list-score p {
+  position: relative;
+  margin-bottom: 0px !important;
+  top: 22px;
+}
+
+.list-circle-goals {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 3px 8px;
+
+}
+
+.list-city-name {
+  margin: 20px;
+}
+
+.list-description {
+  margin: 20px;
+}
+
+.list-button {
+  border: 1px solid black;
+  padding: 3px 8px;
+  font-size: 24px;
+  border-radius: 10px;
+  width: 20vh;
+  margin: auto;
+  text-align: center;
+}
+
+.margin-bottom-goals {
+  margin-top: 20px;
+}
+
+.list-line {
+  width: 50%;
+}
