@@ -10,12 +10,15 @@ class ProfileCreationService
 
   def call
     infos = GithubGetterService.new(@nickname).call
-    p = Profile.new(infos["profile"])
+    p = Profile.new(infos[:profile])
     p.user = @current_user
     p.save
-    t = Technical.new(infos["technicals"])
+    # p infos
+    t = Technical.new(infos[:technicals])
     t.profile = p
     t.save
+    p p
+    p t
   end
 
 end

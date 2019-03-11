@@ -3,7 +3,11 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @profiles = Profile.all
+    @profiles_id = ScoreMatchingService.new(social_weight: 2, style_weight: 2, language_weight: 2, experience_weight: 2, current_user: current_user).call
+    @profiles = @profiles_id.map do |element|
+      Profile.find(element) 
+    end
+    fail
     # afficher les profiles dans l'ordre de matching score décroissant (sauf le current_profile)
   end
 
