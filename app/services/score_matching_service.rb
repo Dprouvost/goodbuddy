@@ -13,75 +13,80 @@ class ScoreMatchingService
 
   def call
   # Objectif: definir un total_score
-  commun_goals_profile_sample
-    # total_score = commun_goals_profile_sample.map do |id|
+    # total_score = 
+    commun_goals_profile_sample.map do |id|
+       # changer le score en fonction de la methode que l'on teste
+
     #   goal_weight = 0.5 * (@social_weight + @language_weight + @style_weight + @experience_weight)
     #   score = ((score_goal(id) * goal_weight) + (score_social(id) * social_weight) + (score_language(id) * language_weight) + (score_style(id) * style_weight) + (score_experience(id) * experience_weight)) / (goal_weight + social_weight + language_weight + style_weight + experience_weight)
-    #   [score, id]
-    # end
+      [score_goal(id), id]
+    end
     # total_score.sort_by { |element| -element[0] } # A vérifier
   end
 
   private
 
   def commun_goals_profile_sample
-    p goals = @current_user.profile.categories.where(stamp: 'goal')
-    goals.map do |category|  #@current_user.profile.
-      p '-----------------------'
-      p category
-      p '-----------------------'
-      category.profiles.where.not(id: @current_user.profile.id).ids #@current_user.profile.id
+    goals = @current_user.profile.categories.where(stamp: 'goal')
+    goals.map do |category|
+      category.profiles.where.not(id: @current_user.profile.id).ids
     end.flatten.uniq
   end
 
   def score_goal(id)
-  # Objectif: definir un score_goal en fonction du nombre de goals en commun
-    (((Profile.find(id).categories.where(stamp: 'goal') & @current_user.profile.categories.where(stamp: 'goal')).count)/((@current_user.profile.categories.where(stamp: 'goal')).count))*100
+    # Objectif: definir un score_goal en fonction du nombre de goals en commun
+      (((Profile.find(id).categories.where(stamp: 'goal') & @current_user.profile.categories.where(stamp: 'goal')).count).to_f/((@current_user.profile.categories.where(stamp: 'goal')).count).to_f)*100
   end
 
   def score_social(id)
   # Objectif: definir un score_social en fonction du nombre de socials en commun
-    (((Profile.find(id).categories.where(stamp: 'social') & @current_user.profile.categories.where(stamp: 'social')).count)/((@current_user.profile.categories.where(stamp: 'social')).count))*100
+    (((Profile.find(id).categories.where(stamp: 'social') & @current_user.profile.categories.where(stamp: 'social')).count).to_f/((@current_user.profile.categories.where(stamp: 'social')).count).to_f)*100
   end
 
   def score_language(id)
   # Objectif: definir un score_language en fonction du nombre de language en commun mais aussi de leur ordre
 
     current_user_language_array = []
-    current_user_language_array << @current_user.profile.tecnhical.language_1
-    current_user_language_array << @current_user.profile.tecnhical.language_2
-    current_user_language_array << @current_user.profile.tecnhical.language_3
+    current_user_language_array << @current_user.profile.technical.language_1
+    current_user_language_array << @current_user.profile.technical.language_2
+    current_user_language_array << @current_user.profile.technical.language_3
     
     profile_user_language_array = []
     profile_user_language_array << Profile.find(id).technical.language_1
     profile_user_language_array << Profile.find(id).technical.language_2
     profile_user_language_array << Profile.find(id).technical.language_3
 
-    if current_user_language_array[0] = profile_user_language_array[0]
+    if profile_user_language_array.include?(current_user_language_array[0]) == false 
+      scoreL1 = 0
+    elsif current_user_language_array[0] == profile_user_language_array[0]
       scoreL1 = 100
-    elsif current_user_language_array[0] = profile_user_language_array[1]
+    elsif current_user_language_array[0] == profile_user_language_array[1]
       scoreL1 = 90
-    elsif current_user_language_array[0] = profile_user_language_array[2]
+    elsif current_user_language_array[0] == profile_user_language_array[2]
       scoreL1 = 80
     end
 
-    if current_user_language_array[1] = profile_user_language_array[0]
+    if profile_user_language_array.include?(current_user_language_array[1]) == false
+      scoreL2 = 0
+    elsif current_user_language_array[1] == profile_user_language_array[0]
       scoreL2 = 70
-    elsif current_user_language_array[1] = profile_user_language_array[1]
+    elsif current_user_language_array[1] == profile_user_language_array[1]
       scoreL2 = 90
-    elsif current_user_language_array[1] = profile_user_language_array[2]
+    elsif current_user_language_array[1] == profile_user_language_array[2]
       scoreL2 = 50
     end
 
-    if current_user_language_array[2] = profile_user_language_array[0]
+    if profile_user_language_array.include?(current_user_language_array[2]) == false
+      scoreL3 = 0
+    elsif current_user_language_array[2] == profile_user_language_array[0]
       scoreL3 = 60
-    elsif current_user_language_array[2] = profile_user_language_array[1]
+    elsif current_user_language_array[2] == profile_user_language_array[1]
       scoreL3 = 50
-    elsif current_user_language_array[2] = profile_user_language_array[2]
+    elsif current_user_language_array[2] == profile_user_language_array[2]
       scoreL3 = 80
     end
 
-    (scoreL1 + scoreL2 + scoreL3) / 270 # à variabiliser pour autoriser le changement de score
+    (((scoreL1 + scoreL2 + scoreL3).to_f/270.0).to_f)*100 # à variabiliser pour autoriser le changement de score
 
   end
 
@@ -101,45 +106,45 @@ class ScoreMatchingService
 
   def github_age_score(id)
     array = []
-    difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs
+    difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
     commun_goals_profile_sample.each do |element|
-      array << Profile.find(element).technical.github_age # a factoriser en variable d'instance github_ag_max_score
+      array << Profile.find(element).technical.github_age 
     end
     array << @current_user.profile.technical.github_age
-    max_score = array.max
+    max_score = array.max.to_f
     (1-(difference/max_score)) * 100
   end
 
   def number_of_projects_score(id)
     array = []
-    difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs
+    difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
     commun_goals_profile_sample.each do |element|
       array << Profile.find(element).technical.number_of_projects
     end
     array << @current_user.profile.technical.number_of_projects
-    max_score = array.max
+    max_score = array.max.to_f
     (1-(difference/max_score)) * 100
   end
 
   def total_commits_score(id)
     array = []
-    difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs
+    difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
     commun_goals_profile_sample.each do |element|
       array << Profile.find(element).technical.total_commits
     end
     array << @current_user.profile.technical.total_commits
-    max_score = array.max
+    max_score = array.max.to_f
     (1-(difference/max_score)) * 100
   end
 
   def followers_score(id)
     array = []
-    difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs
+    difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
     commun_goals_profile_sample.each do |element|
       array << Profile.find(element).technical.followers
     end
     array << @current_user.profile.technical.followers
-    max_score = array.max
+    max_score = array.max.to_f
     (1-(difference/max_score)) * 100
   end
 
