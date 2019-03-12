@@ -3,6 +3,25 @@
   color: white;
 }
 
+.social-description {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  font-family: Lato, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.category-title {
+color: white;
+font-size: 20px;
+text-align: center;
+margin: 0px;
+font-family: Lato, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.row-margin{
+  height: 360px;
+}
+
 .line {
   width: 400px;
 }
@@ -92,4 +111,17 @@
   right: 25px;
   text-align: right;
   
+}
+
+.next-button {
+  border: 1.5px solid black;
+  border-radius: 40px;
+  font-size: 24px;
+  font-weight: 300;
+  padding: 5px 15px;
+  margin-top: 30px;
+}
+
+.next-button:hover {
+  background-color: white;
 }

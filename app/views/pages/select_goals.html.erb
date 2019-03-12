@@ -1,6 +1,6 @@
 <div class="container">
   <div class="goals-title">
-    <h1>Select your goals?</h1>
+    <h1>{What is your objective ?}</h1>
   </div>
   <div class="goals-list">
     <% @categories.each do |category| %>
@@ -11,13 +11,13 @@
   </div>
 
   <div class="description-title">
-    <h1>Tell us more about you</h1>
+    <h2>Tell us more about it!</h2>
   </div>
 
   <div class="description-content">
     <%= simple_form_for @profile, url: select_w_path do |f| %>
     <input type="hidden" name="id" value="<%=@profile.id%>">
-      <%= f.input :description, label: false%>
+      <%= f.input :description, label: false, placeholder: "Do you want to develop a fighting robot, create the next AirBnb, make some friends?"%>
       <input type="hidden" name="goals[categories]" value="" id="goals-input">
       <%= f.button :submit, label: 'Next', class:"submit-goals" %> 
     <% end %>
