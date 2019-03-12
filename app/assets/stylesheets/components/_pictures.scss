@@ -7,9 +7,7 @@
   width: 400px;
 }
 
-.image-selected {
-  border: 3px solid white;
-}
+
 
 .image-size {
   width: 400px;
@@ -20,7 +18,13 @@
   -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  opacity: 0.8;
+}
+
+.picture-selected {
+  border: 3px solid black;
+  opacity: 1;
 }
 
 .image-size:hover {
@@ -29,33 +33,33 @@
 }
 
 
-#messy-desk {
+#dirty {
   background: url("https://images.unsplash.com/photo-1512805668868-1608a189cc2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80") no-repeat;
   background-size: cover;
 }
 
-#clean-desk {
+#clean {
   background: url("https://images.unsplash.com/photo-1526040652367-ac003a0475fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") no-repeat;
   background-size: cover;
 
 }
 
-#guitar {
+#rock {
   background: url("https://images.unsplash.com/photo-1421217336522-861978fdf33a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80") no-repeat;
   background-size: cover;
 }
 
-#concert {
+#house {
   background: url("https://images.unsplash.com/photo-1497911270199-1c552ee64aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") no-repeat;
   background-size: cover;
 }
 
-#healthy-food {
+#healthy {
   background: url("https://images.unsplash.com/photo-1487067159236-defa938d494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") no-repeat;
   background-size: cover;
 }
 
-#fast-food {
+#junk {
   background: url("https://images.unsplash.com/photo-1532022900249-74610fde3038?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80") no-repeat;
   background-size: cover;
 }
