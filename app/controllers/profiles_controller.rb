@@ -10,12 +10,7 @@ class ProfilesController < ApplicationController
       experience_weight: 2,
       current_user: current_user
     ).call
-
-    @sorted_profiles = @profiles_scoring.map do |score, profile_id|
-      {score: score, profile: Profile.find(profile_id).categories.where(stamp: 'goal')}
-    end.sort_by { |e| e[:score] }
-
-    # afficher les profiles dans l'ordre de matching score décroissant (sauf le current_profile)
+    # fail
   end
 
   def new
@@ -23,7 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    # @profile = Profile.new(profile_settings)
+    # @profile = ProfileCreationService.new(profile_params).call
     # if @profile.save
     #   redirect_to root_path #mettre la route de la roue
     # else
@@ -48,7 +43,7 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(@profile).permit(:nickname, :picture, :location, :description)
+      # params.require(@profile).permit(:nickname, :picture, :location, :description, :language_1, :language_2, :language_3, :commit_slot, :github_age, :number_of_projects, :total_commits, :followers)
     end
 
     def set_profile
