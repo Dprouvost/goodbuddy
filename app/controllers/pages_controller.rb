@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     @profile = current_user.profile
     @profile.location = params["profile"]["location"]
     @profile.save
+    @main_categories = Category.where(category_id: nil, stamp: 'social')
     # @categories = Category.where(stamp: 'goal')
     # @profile = Profile.find(3)
   end
@@ -23,6 +24,14 @@ class PagesController < ApplicationController
   def select_goals
     @categories = Category.where(stamp: 'goal')
     @profile = current_user.profile
+    # @profile.categories = params["socials"]["categories"]
+    #   .split(",")
+    #   .reject(&:empty?) #arr.reject { |item| item.empty? }
+    #   .uniq
+      # .map do |id|
+    #     Category.find(id.to_i)
+    #   end
+    @profile.save
     # @profile = Profile.find(params["id"])
   end
 

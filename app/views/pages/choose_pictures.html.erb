@@ -1,29 +1,25 @@
+<h1 class="picture-title">{Who are you?}</h1>
 
-<h1 class="picture-title">Let see who you are <i class="far fa-grin-wink"></i></h1>
-
-
-<div class="container">
+<div class="container" id="category-selection">
+  <% @main_categories.each do |mc| %>
   <div class="row margin">
-    <div class="col image-size" id="messy-desk"></div>
-    <div class="col image-size" id="clean-desk"></div>
+    <div
+      class="col image-size category picture-selected <%= mc.name %>"
+      data-main-category="<%= mc.name %>"
+      id="<%= mc.categories.first.name %>"
+      data-category-id="<%= mc.categories.first.id %>"></div>
+    <div 
+      class="col image-size category <%= mc.name %>"
+      data-main-category="<%= mc.name %>"
+      id="<%= mc.categories.second.name %>"
+      data-category-id="<%= mc.categories.first.id %>"></div>
   </div>
-  <hr class="line">
-  <div class="row">
-    <div class="col image-size" id="guitar"></div>
-    <div class="col image-size" id="concert"></div>
-  </div>
-  <hr class="line">
-  <div class="row">
-    <div class="col image-size" id="healthy-food"></div>
-    <div class="col image-size" id="fast-food"></div>
-  </div>
-  <hr class="line">
-  <div class="row">
-    <div class="col image-size" id="cinema"></div>
-    <div class="col image-size" id="netflix"></div>
-  </div>
-  <div id="center-button-next-pic">
-    <%# <button id="image-button">Next</button> %>
-    <%= link_to "Next", select_goals_path, class: 'button' %>
+  <% end %>
+  <div class="center-button-next-pic">
+    <%= simple_form_for @profile, url: select_goals_path do |f| %>
+      <input type="hidden" name="socials[categories]" value="" id="pics-input">
+      <input type="hidden" name="next-step" value="goals">
+      <%= f.button :submit, text: 'Next', class:"button", id: 'validate-pics' %> 
+    <% end %>
   </div>
 </div>
