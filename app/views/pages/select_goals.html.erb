@@ -15,7 +15,7 @@
   </div>
 
   <div class="description-content">
-    <%= simple_form_for @profile, url: select_w_path do |f| %>
+    <%= simple_form_for @profile, url: select_w_path, method: "get" do |f| %>
     <input type="hidden" name="id" value="<%=@profile.id%>">
       <%= f.input :description, label: false, placeholder: "Do you want to develop a fighting robot, create the next AirBnb, make some friends?"%>
       <input type="hidden" name="goals[categories]" value="" id="goals-input">

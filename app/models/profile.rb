@@ -6,4 +6,7 @@ class Profile < ApplicationRecord
   has_one :technical, dependent: :destroy 
   has_one :weighting, dependent: :destroy 
 
+  def goals
+    categories.where(stamp: "goal")
+  end
 end

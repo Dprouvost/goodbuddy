@@ -2,7 +2,7 @@
     <div class="location-form">
         <h1>{Where do you want to meet buddies ?}</h1>
             <div class="location-form">
-                <%= simple_form_for @profile, url: choose_pictures_path do |f| %>
+                <%= simple_form_for @profile, url: choose_pictures_path, method: "get" do |f| %>
                     <%= f.input :location, label: false, include_blank: false, collection: ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Montpellier", "Strasbourg", "Bordeaux", "Lille", "Rennes", "Reims", "Saint-Etienne", "Le Havre", "Rouen", "Toulon", "Grenoble", "Dijon", "Angers", "Nîmes", "Le Mans", "Clermont-Ferrand", "Brest", "Tours", "Limoges", "Metz", "Caen"] %>  
                     <div class="button-sumbit-form">
                     <%= f.button :submit, 'Next', class:"submit-form" %>
