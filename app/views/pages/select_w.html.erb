@@ -2,53 +2,13 @@
   <div class="goals-title">
     <h1>{What is the most important for you?}</h1>
   </div>
-  
-    <div class="goals-list">
-      <p>Programming languages</p>
-        <div class="d-flex justify-content-center my-2">
-      <span class="font-weight-bold indigo-text mr-1 mt-1"></span>
-      <form class="range-field w-75">
-        <input class="border-0" type="range" min="0" max="2" style="width: 500px;"/>
-      </form>
-      <span class="font-weight-bold indigo-text ml-2 mt-1"></span>
-    </div>
-    </div>
-
-    <div class="goals-list">
-      <p>Programming style</p>
-    <div class="d-flex justify-content-center my-2">
-      <span class="font-weight-bold blue-text mr-1 mt-1"></span>
-      <form class="range-field w-75">
-        <input class="border-0" type="range" min="0" max="2" style="width: 500px;"/>
-      </form>
-      <span class="font-weight-bold blue-text ml-2 mt-1"></span>
-    </div>
-    </div>
-
-    <div class="goals-list">
-      <p>Programming experience</p>
-    <div class="d-flex justify-content-center my-2">
-      <span class="font-weight-bold purple-text mr-1 mt-1"></span>
-      <form class="range-field w-75">
-        <input class="border-0" type="range" min="0" max="2" style="width: 500px;"/>
-      </form>
-      <span class="font-weight-bold purple-text ml-2 mt-1"></span>
-    </div>
-    </div>
-
-    <div class="goals-list">
-      <p>Social compatibility</p>
-    <div class="d-flex justify-content-center my-2">
-      <span class="font-weight-bold purple-text mr-1 mt-1"></span>
-      <form class="range-field w-75">
-        <input class="border-0" type="range" min="0" max="2" style="width: 500px;"/>
-      </form>
-      <span class="font-weight-bold purple-text ml-2 mt-1"></span>
-    </div>
-    </div>
-
-    <div id="center-button-next-pic">
-      <p> <%= link_to "Next", profiles_path, class:"btn btn-flat button" %> </p>
-    </div>
-
+    <form action="<%= profiles_path  %>" method="GET">
+      <input type="hidden" name="id" value="<%=@profile.id%>">
+      <input type="range" name="weighting[language]" min="0" max="2" class="border-0" style="width: 500px;">
+      <input type="range" name="weighting[style]" min="0" max="2" class="border-0" style="width: 500px;">
+      <input type="range" name="weighting[experience]" min="0" max="2" class="border-0" style="width: 500px;">
+      <input type="range" name="weighting[social]" min="0" max="2" class="border-0" style="width: 500px;">
+      <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
+    </form>
+  <hr><hr>
 </div>

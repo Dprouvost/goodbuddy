@@ -3,11 +3,15 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
+    # gestion de l'arriver depuis select_w
+    weighting = Weighting.new(weighting_params)
+    @profile = Profile.find(params[:id])
+    @profile.weighting = weighting
     @profiles_scoring = ScoreMatchingService.new(
-      social_weight: 2,
-      style_weight: 2,
-      language_weight: 2,
-      experience_weight: 2,
+      social_weight: @profile.weighting.social,
+      style_weight: @profile.weighting.style,
+      language_weight: @profile.weighting.language,
+      experience_weight: @profile.weighting.experience,
       current_user: current_user
     ).call
     # fail
@@ -25,6 +29,8 @@ class ProfilesController < ApplicationController
     #   render :new
     # end
   end
+
+
 
   def edit
     @profile = Profile.find(params[:id])
@@ -50,4 +56,7 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
+    def weighting_params
+      params.require(:weighting).permit(:language, :style, :experience, :social)
+    end
 end
