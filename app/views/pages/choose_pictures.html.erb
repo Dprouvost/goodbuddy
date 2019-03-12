@@ -1,29 +1,36 @@
 
-<h1 class="picture-title">Let see who you are <i class="far fa-grin-wink"></i></h1>
+<h1 class="picture-title">{Who are you?}</h1>
 
 
 <div class="container">
+    <h3 class="social-description"> For each category, choose the picture that represents you best! </h2>
+      <hr class="line">
+    <h4 class="category-title"> Desk </h4>
   <div class="row margin">
     <div class="col image-size" id="messy-desk"></div>
     <div class="col image-size" id="clean-desk"></div>
   </div>
   <hr class="line">
+  <h4 class="category-title"> Music </h4>
   <div class="row">
     <div class="col image-size" id="guitar"></div>
     <div class="col image-size" id="concert"></div>
   </div>
   <hr class="line">
+  <h4 class="category-title"> Food </h4>
   <div class="row">
     <div class="col image-size" id="healthy-food"></div>
     <div class="col image-size" id="fast-food"></div>
   </div>
   <hr class="line">
+  <h4 class="category-title"> Movies </h4>
   <div class="row">
     <div class="col image-size" id="cinema"></div>
     <div class="col image-size" id="netflix"></div>
   </div>
-  <div id="center-button-next-pic">
-    <%# <button id="image-button">Next</button> %>
-    <%= link_to "Next", select_goals_path, class: 'button' %>
+  <!-- This button will end up being a form once JS is added, hence why it doesn't look uniform for now -->
+  <div id="center-button-next-pic"> 
+    <%# <button id="image-button">Next</button> %> 
+    <%= link_to "Next", select_goals_path, class: 'next-button' %> 
   </div>
 </div>
