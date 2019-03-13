@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col-6">
         <div class="profile-avatar inline-div">
-            <img alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            <img alt="avatar-large" src="<%= @profile.picture %>" />
         </div>
         <div class="inline-div">
-          <h3 class="profile-avatar-name">Theowhat</h3>
-          <h5 class="profile-avatar-city"><i class="fas fa-map-marker-alt"></i> Lille</h5>
+          <h3 class="profile-avatar-name"><%= @profile.nickname %></h3>
+          <h5 class="profile-avatar-city"><i class="fas fa-map-marker-alt"></i> <%= @profile.location %></h5>
         </div>
       </div>
 
       <div class="col-6">
         <div class="list-score-show">
-          <h4><strong>90%</strong></h4>
-          <p>Overall score</p>
+          <h4><strong><%= number_to_percentage(@score[:total], precision: 0) %></strong></h4>
+          <p>Overall matching score</p>
         </div>
       </div>
     </div>
@@ -29,30 +29,37 @@
       
         <div class="cards">
           <div class="card language-charac">Languages</div>
-          <div class="card language-charac">Top 3: Ruby, Python and CSS</div>
+          <div class="card language-charac">Top 3: <%= @profile.technical.language_1%> , <%= @profile.technical.language_2%>  and <%= @profile.technical.language_3%> </div>
           <div class="card language-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: 80%;">80%</div>
+              <div class="percent" style="width: <%= number_to_percentage(@score[:language], precision: 0) %>;"><%= number_to_percentage(@score[:language], precision: 0) %> </div>
             </div>
           </div>
 
           <div class="card style-charac">Style</div>
-          <div class="card style-charac">Theowhat is an early fucking dev</div>
+            <% if @profile.technical.commit_slot == 1 %>
+              <% image = "Morning developer" %>
+              <% elsif @profile.technical.commit_slot == 2 || @profile.technical.commit_slot == 3 %>
+              <% image = "Day developer" %>
+              <% else %>
+              <% image = "Night developer" %>
+              <% end %>
+          <div class="card style-charac"><%= image %></div>
           <div class="card style-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: 80%;">80%</div>
+              <div class="percent" style="width: <%= number_to_percentage(@score[:style], precision: 0) %>;"><%= number_to_percentage(@score[:style], precision: 0) %> </div>
             </div>
           </div>
           <div class="card experience-charac">Experiences</div>
           <div class="card experience-charac">
-            <div>Comment est votre blnaquette?</div>
-            <div>Comment est votre blnaquette?</div>
-            <div>Comment est votre blnaquette?</div>
-            <div>Comment est votre blnaquette?</div>
+            <div>Github account since <%= number_with_delimiter(@profile.technical.github_age) %> days</div>
+            <div><%= number_with_delimiter(@profile.technical.total_commits) %> commits on Github </div>
+            <div>Contributed to <%= number_with_delimiter(@profile.technical.number_of_projects) %> projects on Github </div>
+            <div> Has <%= number_with_delimiter(@profile.technical.followers) %> followers on Github</div>
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: 80%;">80%</div>
+              <div class="percent" style="width: <%= number_to_percentage(@score[:experience], precision: 0) %>;"><%= number_to_percentage(@score[:experience], precision: 0) %> </div>
             </div>
           </div>
         </div>
@@ -62,15 +69,14 @@
     <div class="row">
       <div class="col">
         <h3><strong>Description</strong></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.</p>
+          <p><%= @profile.description %> </p>
       </div>
       <div class="col">
         <div>
           <h3><strong>Goals</strong></h3>
-            <p class="inline-div list-circle-goals">Virtual Reality</p>
-            <p class="inline-div list-circle-goals">Apps</p>
-            <p class="inline-div list-circle-goals">Gadget</p>
-            <p class="inline-div list-circle-goals">Biotech</p>
+          <% @profile.goals_name.each do |name| %>
+            <p class="inline-div list-circle-goals"> <%= name %></p>
+            <% end %>
         </div>
       </div>
     </div>

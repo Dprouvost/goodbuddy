@@ -38,6 +38,14 @@ class ProfilesController < ApplicationController
 
   def show
     # afficher le profile qui a le matching score le plus élevé (sauf le current_profile)
+    @profiles_scoring = ScoreMatchingService.new(
+      social_weight: @profile.weighting.social,
+      style_weight: @profile.weighting.style,
+      language_weight: @profile.weighting.language,
+      experience_weight: @profile.weighting.experience,
+      current_user: current_user
+    ).call
+    @score = @profiles_scoring.select { |h| h[:profile].id == @profile.id }.first[:score] #TODO make it better
   end
 
   def update
