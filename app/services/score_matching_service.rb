@@ -105,10 +105,6 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      # p @current_user
-      # p @current_user.profile
-      # p @current_user.profile.technical
-      # p @current_user.profile.technical.language_1
     
       current_user_language_array = []
       current_user_language_array << @current_user.profile.technical.language_1
@@ -157,7 +153,8 @@ class ScoreMatchingService
   def score_style(id)
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
       case (Profile.find(id).technical.commit_slot - @current_user.profile.technical.commit_slot).abs 
       when 0
         100
@@ -174,7 +171,8 @@ class ScoreMatchingService
   def score_github_age(id)
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
       difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
       (1-(difference/@max_github_age.to_f)) * 100
     end
@@ -183,7 +181,8 @@ class ScoreMatchingService
   def score_number_of_projects(id)
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
       difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
       (1-(difference/@max_number_of_projects.to_f)) * 100
     end
@@ -192,7 +191,8 @@ class ScoreMatchingService
   def score_total_commits(id)
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
       difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
       (1-(difference/@max_total_commits.to_f)) * 100
     end
@@ -201,7 +201,8 @@ class ScoreMatchingService
   def score_followers(id)
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
       difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
       (1-(difference/@max_followers.to_f)) * 100
     end

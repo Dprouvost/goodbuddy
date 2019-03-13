@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     weighting = Weighting.new(weighting_params)
     @profile = Profile.find(params[:id])
     @profile.weighting = weighting
-    p @profiles_scoring = ScoreMatchingService.new(
+    @profiles_scoring = ScoreMatchingService.new(
       social_weight: @profile.weighting.social,
       style_weight: @profile.weighting.style,
       language_weight: @profile.weighting.language,
