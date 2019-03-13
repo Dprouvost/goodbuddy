@@ -1,5 +1,5 @@
 meta_product_name: "GoodBuddy"
 meta_title: "GoodBuddy - Meet buddies that code like you!"
 meta_description: "GoodBuddy helps you find buddies that code like you thanks to a perfoming algorithm. Want to launch a new app, develop a side project or create a fighting robot? Sign in for free !"
-meta_image: "banner.jpeg" # should exist in `app/assets/images/`
+# meta_image: "banner.jpeg" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
