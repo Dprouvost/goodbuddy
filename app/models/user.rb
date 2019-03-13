@@ -19,7 +19,12 @@ class User < ApplicationRecord
 
   # creates profile if not existing
   def profile
-    super || Profile.create(user: self) #, nickname: self.nickname, picture: self.picture_url)
-    # Profile.technicals = Technical.create(profile_id: self.profile.id, commit_slot: get_commit_slot(self.profile.nickname), github_age: get_age(self.profile.nickname), number_of_projects: get_number_of_projects(self.profile.nickname), total_commits: get_total_commits(self.profile.nickname), followers: get_followers(self.profile.nickname))
+    _profile = super 
+    if _profile.nil?
+      infos = GithubGetterService.new(self.nickname).call
+      _profile = Profile.create(user: self, **infos[:profile])
+      _profile.technical = Technical.create(profile: self.profile, **infos[:technicals])
+    end
+    _profile
   end
 end
