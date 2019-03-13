@@ -1,3 +1,17 @@
+.sign-up-sign-in-container {
+    background-color: white !important;
+    margin: 10vh auto;
+    height: 100%;
+    width: 25%;
+    padding: 30px 30px;;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px;
+}
+
+.card-body {
+    padding: 0px;
+}
+
 .card{
     background: transparent;
     border-color: transparent;
@@ -5,14 +19,20 @@
 
 .new-login{
     text-align: center;
-    color: white;
+    color: black;
+    margin-bottom: 20px;
 }
 
 .card-title{
-    color:white;
+    color:black;
+    margin-top: 20px;
 }
 
 .card-text{
-    color:white;
+    color:black;
+}
+
+.button1 {
+    border: solid black 2px;
 }
 
