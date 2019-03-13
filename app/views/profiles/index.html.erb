@@ -1,6 +1,4 @@
-<%= @profiles_scoring[0][:profile].goals_name %>
-
-<h1 class="x-profiles-found-title">We found <%= @profiles_scoring.count %> for you!</h1> 
+<h1 class="x-profiles-found-title">See below the 15 most relevant profiles!</h1> 
 
 <div class="container" id="align-all-div">
   <% @profiles_scoring.each do |hash| %>
@@ -8,7 +6,7 @@
       <div class="row">
         <div class="col-8 profile-position">
           <div class="list-avatar inline-div">
-            <img alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            <img alt="avatar-large" src= "<%= hash[:profile].picture%>" />
           </div>
           <div class="list-username inline-div">
             <h3><%= hash[:profile].nickname%></h3> 
