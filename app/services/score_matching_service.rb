@@ -9,9 +9,9 @@ class ScoreMatchingService
     @style_weight = attrs[:style_weight]
     @experience_weight = attrs[:experience_weight]
     @current_user = attrs[:current_user]
-    @goals = Category.goals
-    @main_socials = Category.main_socials
-    @sub_socials = Category.sub_socials
+    # @goals = Category.goals
+    # @main_socials = Category.main_socials
+    # @sub_socials = Category.sub_socials
     @max_github_age = 0
     @max_number_of_projects = 0
     @max_total_commits = 0
@@ -41,13 +41,13 @@ class ScoreMatchingService
     # puts ' '
     # puts ' '
     # puts ' '  
-    @profiles.sort_by {|e| -e[:score]}
+    @profiles.sort_by {|e| -e[:score][:total]}
   end
 
   private
 
   def calculate_score(profile)
-    score = 0
+    # score = 0
     if profile.technical
       sg = score_goal(profile.id)
       sc = score_social(profile.id)
@@ -56,6 +56,14 @@ class ScoreMatchingService
       se = (score_github_age(profile.id) + score_number_of_projects(profile.id) + score_total_commits(profile.id) + score_followers(profile.id))/4.0
       score = ((@goal_weight * sg) + (@social_weight * sc) + (@language_weight * sl) + (@style_weight * ss) + (@experience_weight * se)) / (@goal_weight + @social_weight + @language_weight + @style_weight + @experience_weight)
     end
+    {
+      total: score || 0,
+      goal: sg || 0,
+      social: sc || 0,
+      language: sl || 0,
+      style: ss || 0,
+      experience: se || 0
+    }
   end
 
   def commun_goals_profile_sample
