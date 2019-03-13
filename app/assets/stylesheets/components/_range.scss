@@ -1,0 +1,33 @@
+.range{
+    text-align: center;
+    color: white;
+}
+
+.submit-w{
+    text-align: right;
+}
+.important{
+    text-align: left;
+}
+.unimportant{
+    text-align: 5dv;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-not-important{
+    text-align: right;
+    color: lightblue;
+}
+
+.card-important{
+    text-align: center;
+    color: lightblue;
+}
+
+.cat-title{
+    text-align: right;
+}
