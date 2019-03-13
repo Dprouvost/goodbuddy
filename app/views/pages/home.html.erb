@@ -1,13 +1,13 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1528901166007-3784c7dd3653?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80);">
   <div class="container font-banner">
     <h1><span id="banner-typed-text"></span></h1>
-    <p>Meet buddies that code like you.</p>
     <% if user_signed_in? == false %>
+    <p>Meet buddies that code like you.</p>
     <p> <%= link_to "Join for free", new_user_registration_path, class:"btn btn-flat button" %> </p>
     <p class="banner-login">Already on GoodBuddy? <%= link_to "Login here",  new_user_session_path, class:"banner-login1" %></p> 
     <% else %>
-    <p> <%= link_to "Show me new profiles!", profiles_path, class:"btn btn-flat button" %> </p>
-    <p class="banner-login">Your objectives have changed? <%= link_to "Change them, click here !", select_goals_path, class:"banner-login1" %></p> 
+    <p> Welcome back!</p>
+    <p> <%= link_to "Get new buddies!", '/location', class:"btn btn-flat button" %> </p> 
     <% end %>
   </div>
 </div>
