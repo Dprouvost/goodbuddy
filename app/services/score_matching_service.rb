@@ -28,7 +28,6 @@ class ScoreMatchingService
   #3 - Affiler un score à chacun des profils comparables
     @profiles.map! do |profile|
       score = calculate_score(profile)
-      score = score.nil? ? 0 : score
       {
         score: score,
         profile: profile
@@ -105,6 +104,12 @@ class ScoreMatchingService
     profile = Profile.find(id)
     technical = profile.technical if profile
     if technical
+      p @current_user
+      p @current_user.profile
+      p @current_user.profile.technical
+      p @current_user.profile.technical.language_1
+      
+      
       current_user_language_array = []
       current_user_language_array << @current_user.profile.technical.language_1
       current_user_language_array << @current_user.profile.technical.language_2
