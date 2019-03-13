@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container background-goals-container">
   <div class="goals-title">
-    <h1>{What is your objective ?}</h1>
+    <h2><strong>What is your objective?</strong></h2>
   </div>
   <div class="goals-list">
     <% @categories.each do |category| %>
@@ -9,9 +9,9 @@
       </span>
     <% end %>
   </div>
-
+  <hr>
   <div class="description-title">
-    <h2>Tell us more about it!</h2>
+    <h2><strong>Tell us more about it!</strong></h2>
   </div>
 
   <div class="description-content">
@@ -19,7 +19,7 @@
     <input type="hidden" name="id" value="<%=@profile.id%>">
       <%= f.input :description, label: false, placeholder: "Do you want to develop a fighting robot, create the next AirBnb, make some friends?"%>
       <input type="hidden" name="goals[categories]" value="" id="goals-input">
-      <%= f.button :submit, label: 'Next', class:"submit-goals" %> 
+      <%= f.button :submit, 'Next', class:"submit-goals" %> 
     <% end %>
   </div>
 </div>
