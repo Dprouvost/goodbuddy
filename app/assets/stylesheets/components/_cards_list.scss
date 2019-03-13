@@ -35,10 +35,12 @@
 .list-username {
   position: absolute;
   top: 30px;
+  
 }
 
 .list-username h3 {
   font-size: 30px;
+  font-weight: 800;
 }
 
 .list-username p {
@@ -88,16 +90,15 @@
   border: 1px solid black;
   border-radius: 20px;
   padding: 3px 8px;
-
+  font-size: 12px;
+  background-color: rgb(200, 200, 200);
 }
 
 .list-city-name {
   margin: 20px;
 }
 
-.list-description {
-  margin: 20px;
-}
+
 
 .list-button {
   border: 1px solid black;
@@ -109,10 +110,63 @@
   text-align: center;
 }
 
-.margin-bottom-goals {
-  margin-top: 20px;
-}
+// .margin-bottom-goals {
+//   margin-top: 20px;
+// }
 
 .list-line {
   width: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.list-description {
+  margin: 10px;
+  margin-left: 20px;
+  padding: 20px;
+  height: 190px;
+  background-color: rgba(100, 100, 100, 0.2);
+  border-radius: 3px;
+}
+
+.list-description h3{
+  font-size: 20px;
+}
+
+.show-button {
+  margin-left:auto;
+  margin-right:auto;
+  background: -webkit-linear-gradient(#3EC8AC, #4E90A4);
+  border: 1.5px solid white;
+  color: white;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 5px 15px;
+}
+
+.goal-description{
+  margin: 10px;
+  margin-right: 20px;
+  padding: 20px;
+  height: 190px;
+  background-color: rgba(100, 100, 100, 0.2);
+  border-radius: 3px;
+}
+
+.goal-description h3{
+  font-size: 20px;
+}
+
+.show-button:hover {
+  background: white;
+  border: 1.5px solid #3EC8AC;
+  color: #3EC8AC;
+}
+
+.btn-show-detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; 
 }

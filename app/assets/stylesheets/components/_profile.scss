@@ -25,7 +25,6 @@
   top: 21px;
   left:10px;
   font-size: 14px;
-
 }
 
 .list-score-show {
@@ -106,15 +105,23 @@
     }
 }
 
-.cards {
+.cards-show {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 3fr 2fr !important;
 }
 
 .language-charac {
   background-color: #EAEAEA !important;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.language-charac2 {
+  background-color: #EAEAEA !important;
+  vertical-align: text-bottom;
+  background-color: white !important;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .style-charac {

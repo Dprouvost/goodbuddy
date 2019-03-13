@@ -1,7 +1,7 @@
 <h1 class="x-profiles-found-title">See below the 15 most relevant profiles!</h1> 
 
 <div class="container" id="align-all-div">
-  <% @profiles_scoring.each do |hash| %>
+  <% @profiles_scoring.first(15).each do |hash| %>
     <div class="card-list-border">
       <div class="row">
         <div class="col-8 profile-position">
@@ -10,7 +10,7 @@
           </div>
           <div class="list-username inline-div">
             <h3><%= hash[:profile].nickname%></h3> 
-            <p>Location: <%= hash[:profile].location %> </p> 
+              <p style="font-size: 15px;" class="profile-avatar-city"><i class="fas fa-map-marker-alt"></i> Location: <%= hash[:profile].location %> </p>
           </div>
         </div>
         <div class="col-4 position-score">
@@ -22,22 +22,25 @@
       </div>
       <hr class="list-line">
       <div class="row ">
-        <div class="col-8">
+        <div class="col-6">
           <div class="list-description">
             <h3><strong>Description</strong></h3>
             <p><%= hash[:profile].description%></p> 
           </div>
         </div>
-        <div class="col-4 margin-bottom-goals">
-          <div>
-            <h3><strong>Goals</strong></h3>
+        <div class="col-6 margin-bottom-goals">
+          <div class="goal-description">
+            <h3><strong>Interests</strong></h3>
             <% hash[:profile].goals_name.each do |name| %>
               <p class="inline-div list-circle-goals"><%= name %></p>
             <% end %>
           </div>
-            <p> <%= link_to "Show details", profile_path(hash[:profile]), class:"btn btn-flat button" %> </p>
         </div>
+        
       </div>
+      <div class="btn-show-detail">
+          <%= link_to "Show details", profile_path(hash[:profile]) + '?' + request.original_url.split('?')[1], class:"btn show-button"%>
+        </div>
     </div>
     <% end %>
 </div>

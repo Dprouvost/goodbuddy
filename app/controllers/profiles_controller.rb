@@ -1,19 +1,20 @@
 class ProfilesController < ApplicationController
 
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     # gestion de l'arriver depuis select_w
     weighting = Weighting.new(weighting_params)
-    @profile = Profile.find(params[:id])
     @profile.weighting = weighting
-    @profiles_scoring = ScoreMatchingService.new(
-      social_weight: @profile.weighting.social,
-      style_weight: @profile.weighting.style,
-      language_weight: @profile.weighting.language,
-      experience_weight: @profile.weighting.experience,
-      current_user: current_user
-    ).call
+    if @profile.save
+      @profiles_scoring = ScoreMatchingService.new(
+        social_weight: @profile.weighting.social,
+        style_weight: @profile.weighting.style,
+        language_weight: @profile.weighting.language,
+        experience_weight: @profile.weighting.experience,
+        current_user: current_user
+      ).call
+    end
     # fail
   end
 
@@ -38,6 +39,8 @@ class ProfilesController < ApplicationController
 
   def show
     # afficher le profile qui a le matching score le plus élevé (sauf le current_profile)
+    weighting = Weighting.new(weighting_params)
+    @profile.weighting = weighting
     @profiles_scoring = ScoreMatchingService.new(
       social_weight: @profile.weighting.social,
       style_weight: @profile.weighting.style,
