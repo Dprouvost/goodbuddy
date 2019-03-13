@@ -1,6 +1,6 @@
 <div class="container background-goals-container">
   <div class="goals-title">
-    <h2><strong>What is your objective?</strong></h2>
+    <h2><strong>What are you interested in?</strong></h2>
   </div>
   <div class="goals-list">
     <% @categories.each do |category| %>
@@ -17,7 +17,7 @@
   <div class="description-content">
     <%= simple_form_for @profile, url: select_w_path, method: "get" do |f| %>
     <input type="hidden" name="id" value="<%=@profile.id%>">
-      <%= f.input :description, label: false, placeholder: "Do you want to develop a fighting robot, create the next AirBnb, make some friends?"%>
+      <%= f.input :description, label: false, input_html: { maxlength: 280 }, html: { class: 'required' }, placeholder: "Do you want to develop a fighting robot, create the next AirBnb, make some friends? (280 characters max) "%>
       <input type="hidden" name="goals[categories]" value="" id="goals-input">
       <%= f.button :submit, 'Next', class:"submit-goals" %> 
     <% end %>

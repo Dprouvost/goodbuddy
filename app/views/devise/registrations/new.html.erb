@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="new-login">Sign up with GitHub</h1>
+<div class="container sign-up-sign-in-container">
+  <h2 class="new-login">Sign up with GitHub</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -24,10 +24,10 @@
   <% end %> -->
   <div class="card text-center">
     <div class="card-body">
-      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="150" height="150" alt=""> </p>
-      <h3 class="card-title"> <strong> GitHub ? Why ? </strong> </h3>
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1920px-Octicons-mark-github.svg.png" width="100" height="100" alt=""> </p>
+      <h3 class="card-title"> GitHub ? Why ?</h3>
       <p class="card-text"> We will use your public repositories to analyze your style and give you <strong> the most relevant matches </strong> according to your profile!</p>
-      <p> <%= link_to "Sign Up with GitHub", user_github_omniauth_authorize_path, class:"btn btn-flat button" %> </p>
+      <p> <%= link_to "Sign Up with GitHub", user_github_omniauth_authorize_path, class:"btn btn-flat button button1" %> </p>
     </div>
   </div>
   <!-- <%= render "devise/shared/links" %> -->

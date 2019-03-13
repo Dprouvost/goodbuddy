@@ -1,84 +1,129 @@
-<div class="container">
+<div class="container weighting-container">
+  <%# TITLE %>
   <div class="goals-title">
-    <h1>{What is the most important for you?}</h1>
-    <p> Placing the marker to the right side of the bar means it is important for you!</p>
+    <h2 class="weigthing-title">What does matter to you?</h2>
   </div>
-    <!-- <form action="<%= profiles_path  %>" method="GET">
-      <input type="hidden" name="id" value="<%=@profile.id%>">
-      <div class="range">
-        <h4> Common Languages </h4>
-        <input type="range" name="weighting[language]" min="0" max="2" class="border-0" style="width: 500px;">
+
+  <%# FORM - START %>
+  <form action="<%= profiles_path  %>" method="GET">
+    <input type="hidden" name="id" value="<%=@profile.id%>">
+
+    <%# FIRST CURSOR %>
+    <h4 class="cat-title">Common Languages</h4>
+    <div class="cards-weighting">
+      <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
+      <div class="card cursor">
+            <input type="range" list="tickmarks" name="weighting[language]" min="0" max="2" step="0.01" class="border-0">
       </div>
-      <hr width="50%">
-      <div class="range">
-        <h4> Programming style </h4>
-        <input type="range" name="weighting[style]" min="0" max="2" class="border-0" style="width: 500px;">
+      <div class="card important"><i class="far fa-thumbs-up"></i></div>
+    </div>
+
+    <%# SECOND CURSOR %>
+    <h4 class="cat-title">Programming Style</h4>
+    <div class="cards-weighting">
+      <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
+      <div class="card cursor">
+        <input type="range" name="weighting[style]" min="0" max="2" step="0.01" class="border-0">
       </div>
-      <hr width="50%">
-      <div class="range">
-        <h4> Experience </h4>
-        <input type="range" name="weighting[experience]" min="0" max="2" class="border-0" style="width: 500px;">
+      <div class="card important"><i class="far fa-thumbs-up"></i></div>
+    </div>
+
+    <%# THIRD CURSOR %>
+    <h4 class="cat-title">Programming experience</h4>
+    <div class="cards-weighting">
+      <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
+      <div class="card cursor">
+        <input type="range" name="weighting[experience]" min="0" max="2" step="0.01"class="border-0">
       </div>
-      <hr width="50%">
-      <div class="range">
-        <h4> Social compatibility </h4>
-        <input type="range" name="weighting[social]" min="0" max="2" class="border-0" style="width: 500px;">
+      <div class="card important"><i class="far fa-thumbs-up"></i></div>
+    </div>
+
+    <%# FOURTH CURSOR %>
+    <h4 class="cat-title">Social compatibility</h4>
+    <div class="cards-weighting">
+      <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
+      <div class="card cursor">
+        <input type="range" name="weighting[social]" min="0" max="2" class="border-0">
       </div>
-      <hr width="50%">
-      <div class="submit-w">
-      <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
+      <div class="card important"><i class="far fa-thumbs-up"></i></div>
+    </div>
+
+    <div class="cards-weighting">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card submit-w">
+        <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
       </div>
-    </form> -->
+    </div>
+    
+    </div>
+  </form>
 </div>
 
-<div class="container">
-<form action="<%= profiles_path  %>" method="GET">
-<input type="hidden" name="id" value="<%=@profile.id%>">
-<div class="cards">
-  <div class="card-not-important"> Not important</div>
-  <div class="card">
-      <div class="range">
-        <h4 class="cat-title"> Common Languages </h4>
-        <input type="range" name="weighting[language]" min="0" max="2" class="border-0" style="width: 500px;">
-      </div>
+
+<%# <datalist id="tickmarks">
+ <option value="0" label="0">
+ <option value="1" label=“1“>
+ <option value="2" label="2">
+</datalist> %>
+
+
+
+
+<!-- <div class="container weighting-container">
+  <div class="goals-title">
+    <h2>What is the most important for you?</h2>
+    <p> Placing the marker to the right side of the bar means it is important for you!</p>
   </div>
-  <div class="card-important">Important</div>
-</div>
-<hr width="50%">
-<div class="cards">
-    <div class="card-not-important"></div>
-    <div class="card">
+
+  <form action="<%= profiles_path  %>" method="GET">
+  <input type="hidden" name="id" value="<%=@profile.id%>">
+  <div class="cards">
+    <div class="card-not-important"> Not important</div>
+      <div class="card">
         <div class="range">
-          <h4 class="cat-title"> Programming Style </h4>
-          <input type="range" name="weighting[style]" min="0" max="2" class="border-0" style="width: 500px;">
+          <h4 class="cat-title"> Common Languages </h4>
+          <input type="range" name="weighting[language]" min="0" max="2" class="border-0" style="width: 500px;">
         </div>
+  
     </div>
-    <div class="card-important"></div>
+    
+  <div class="card-important">Important</div>
   </div>
-  <hr width="50%">
   <div class="cards">
       <div class="card-not-important"></div>
       <div class="card">
           <div class="range">
-            <h4 class="cat-title"> Common Languages </h4>
-            <input type="range" name="weighting[experience]" min="0" max="2" class="border-0" style="width: 500px;">
+            <h4 class="cat-title"> Programming Style </h4>
+            <input type="range" name="weighting[style]" min="0" max="2" class="border-0" style="width: 300px;">
           </div>
       </div>
       <div class="card-important"></div>
     </div>
-    <hr width="50%">
+
     <div class="cards">
         <div class="card-not-important"></div>
         <div class="card">
             <div class="range">
-              <h4 class="cat-title"> Social compatibility </h4>
-              <input type="range" name="weighting[social]" min="0" max="2" class="border-0" style="width: 500px;">
+              <h4 class="cat-title"> Common Languages </h4>
+              <input type="range" name="weighting[experience]" min="0" max="2" class="border-0" style="width: 500px;">
             </div>
         </div>
         <div class="card-important"></div>
       </div>
-      <div class="submit-w">
-          <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
+      
+      <div class="cards">
+          <div class="card-not-important"></div>
+          <div class="card">
+              <div class="range">
+                <h4 class="cat-title"> Social compatibility </h4>
+                <input type="range" name="weighting[social]" min="0" max="2" class="border-0" style="width: 500px;">
+              </div>
           </div>
-        </form>
-</div>
+          <div class="card-important"></div>
+        </div>
+        <div class="submit-w">
+            <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
+            </div>
+  </form>
+</div> -->

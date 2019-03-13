@@ -1,7 +1,7 @@
 .background-goals-container {
   background-color: white !important;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin: 5vh auto;
+  height: 100%;
   width: 50%;
   padding: 50px;
   border-radius: 10px;
@@ -17,6 +17,7 @@
   margin: 20px auto;
   color: white;
   width: 90%;
+
 }
 
 .description-title {
@@ -44,6 +45,7 @@
   border-radius: 40px;
   font-size: 18px;
   padding: 0 15px;
+  margin: 3px 2px;
 }
 
 .goals-unselected:hover {
@@ -78,4 +80,11 @@
 .submit-goals:hover {
   background-color: #5DCCA2;
   color: white;
+}
+
+::placeholder {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.3) !important;
 }
