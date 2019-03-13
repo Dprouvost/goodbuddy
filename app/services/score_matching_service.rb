@@ -147,6 +147,8 @@ class ScoreMatchingService
       end
 
       (((scoreL1 + scoreL2 + scoreL3).to_f/270.0).to_f)*100
+    else
+      0.0
     end
   end
 
@@ -165,6 +167,8 @@ class ScoreMatchingService
       when 3
         0
       end
+    else
+      0.0
     end
   end
 
@@ -175,6 +179,8 @@ class ScoreMatchingService
     if technical && technical_user
       difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
       (1-(difference/@max_github_age.to_f)) * 100
+    else
+      0.0
     end
   end
 
@@ -185,6 +191,8 @@ class ScoreMatchingService
     if technical && technical_user
       difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
       (1-(difference/@max_number_of_projects.to_f)) * 100
+    else
+      0.0
     end
   end
 
@@ -195,6 +203,8 @@ class ScoreMatchingService
     if technical && technical_user
       difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
       (1-(difference/@max_total_commits.to_f)) * 100
+    else
+      0.0
     end
   end
 
@@ -205,6 +215,8 @@ class ScoreMatchingService
     if technical && technical_user
       difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
       (1-(difference/@max_followers.to_f)) * 100
+    else
+      0.0
     end
   end
 
