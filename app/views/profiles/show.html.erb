@@ -27,8 +27,18 @@
     <div class="row">
       <div class="col">
       
-        <div class="cards">
-          <div class="card language-charac">Languages</div>
+        <div class="cards-show">
+          <div class="card language-charac2">
+          <p>Category</h3>
+          </div>
+          <div class="card language-charac2">
+          <%= @profile.nickname %>'s details</h3>
+          </div>
+          <div class="card language-charac2">
+          <%= @profile.nickname %>'s matching scores</h3>
+          </div>
+      
+          <div class="card language-charac"> <strong>Languages</strong></div>
           <div class="card language-charac">Top 3: <%= @profile.technical.language_1%> , <%= @profile.technical.language_2%>  and <%= @profile.technical.language_3%> </div>
           <div class="card language-charac progressive-bar">
             <div class="progress-bar">
@@ -36,7 +46,7 @@
             </div>
           </div>
 
-          <div class="card style-charac">Style</div>
+          <div class="card style-charac"> <strong> Style</strong> </div>
             <% if @profile.technical.commit_slot == 1 %>
               <% image = "Morning developer" %>
               <% elsif @profile.technical.commit_slot == 2 || @profile.technical.commit_slot == 3 %>
@@ -50,12 +60,12 @@
               <div class="percent" style="width: <%= number_to_percentage(@score[:style], precision: 0) %>;"><%= number_to_percentage(@score[:style], precision: 0) %> </div>
             </div>
           </div>
-          <div class="card experience-charac">Experiences</div>
+          <div class="card experience-charac"> <strong> Experiences</strong></div>
           <div class="card experience-charac">
-            <div>Github account since <%= number_with_delimiter(@profile.technical.github_age) %> days</div>
-            <div><%= number_with_delimiter(@profile.technical.total_commits) %> commits on Github </div>
-            <div>Contributed to <%= number_with_delimiter(@profile.technical.number_of_projects) %> projects on Github </div>
-            <div> Has <%= number_with_delimiter(@profile.technical.followers) %> followers on Github</div>
+            <li> Github account since <%= number_with_delimiter(@profile.technical.github_age) %> days</li>
+            <li><%= number_with_delimiter(@profile.technical.total_commits) %> commits on Github </li>
+            <li>Contributed to <%= number_with_delimiter(@profile.technical.number_of_projects) %> projects on Github </li>
+            <li> Has <%= number_with_delimiter(@profile.technical.followers) %> followers on Github</li>
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
@@ -73,7 +83,7 @@
       </div>
       <div class="col">
         <div>
-          <h3><strong>Goals</strong></h3>
+          <h3><strong>Interests</strong></h3>
           <% @profile.goals_name.each do |name| %>
             <p class="inline-div list-circle-goals"> <%= name %></p>
             <% end %>
@@ -82,10 +92,13 @@
     </div>
     <div class="row">
       <div class="col">
-        <div id="profile-send-message">
-          <button>Send message</button>
-        </div>  
+          <div class="btn-show-detail">
+          <button class="btn show-button"> Send Message </button>  
+        </div>
       </div>
     </div>
+    <%= link_to profiles_path, "Back to list" %>
   </div>
 </div>
+
+ 
