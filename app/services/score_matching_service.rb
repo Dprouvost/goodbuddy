@@ -103,13 +103,13 @@ class ScoreMatchingService
   # Objectif: definir un score_language en fonction du nombre de language en commun mais aussi de leur ordre
     profile = Profile.find(id)
     technical = profile.technical if profile
-    if technical
-      p @current_user
-      p @current_user.profile
-      p @current_user.profile.technical
-      p @current_user.profile.technical.language_1
-      
-      
+    technical_user = @current_user.profile.technical
+    if technical && technical_user
+      # p @current_user
+      # p @current_user.profile
+      # p @current_user.profile.technical
+      # p @current_user.profile.technical.language_1
+    
       current_user_language_array = []
       current_user_language_array << @current_user.profile.technical.language_1
       current_user_language_array << @current_user.profile.technical.language_2
