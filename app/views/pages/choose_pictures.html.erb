@@ -1,26 +1,30 @@
-<h1 class="picture-title">Who are you?</h1>
-
-<div class="container" id="category-selection">
-  <% @main_categories.each do |mc| %>
-  <div class="row margin">
-    <div
-      class="col image-size category picture-selected <%= mc.name %>"
-      data-main-category="<%= mc.name %>"
-      id="<%= mc.categories.first.name %>"
-      data-category-id="<%= mc.categories.first.id %>"></div>
-    <div 
-      class="col image-size category <%= mc.name %>"
-      data-main-category="<%= mc.name %>"
-      id="<%= mc.categories.second.name %>"
-      data-category-id="<%= mc.categories.first.id %>"></div>
-  </div>
+<div class="container pic-container" id="category-selection">
+  <h2 class="picture-title"><strong>Who are you?</strong></h2>
+  <p class="picture-subtitle">Click on your choice</p>
+  <% @main_categories.each_with_index do |mc, index| %>
+    <h5 style="text-align:center;"><%= @pic_titles[index] %> </h5>
+    <div class="row margin">
+      <div
+        class="col image-size category picture-selected <%= mc.name %>"
+        data-main-category="<%= mc.name %>"
+        id="<%= mc.categories.first.name %>"
+        data-category-id="<%= mc.categories.first.id %>">
+      </div>
+      <div 
+          class="col image-size category <%= mc.name %>"
+          data-main-category="<%= mc.name %>"
+          id="<%= mc.categories.second.name %>"
+          data-category-id="<%= mc.categories.first.id %>">
+      </div>
+    </div>
   <% end %>
-  <div class="center-button-next-pic">
+  
+  <div class="submit-social-form">
     <%= simple_form_for @profile, url: select_goals_path, method: "get" do |f| %>
       <input type="hidden" name="socials[categories]" value="" id="pics-input">
       <input type="hidden" name="next-step" value="goals">
       <input type="hidden" name="id" value="<%=@profile.id%>">
-      <%= f.button :submit, text: 'Next', class:"button", id: 'validate-pics' %> 
+      <%= f.button :submit, 'Next', class:"button next-button", id: 'validate-pics' %> 
     <% end %>
   </div>
 </div>
