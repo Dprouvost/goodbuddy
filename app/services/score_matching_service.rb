@@ -178,11 +178,9 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      puts 'if'
-      p difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
-      p (1-(difference/@max_github_age.to_f)) * 100
+       difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
+       (1-(difference/@max_github_age.to_f)) * 100
     else
-      puts 'else'
       0.0
     end
   end
@@ -192,11 +190,9 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      puts 'if'
-      p difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
-      p (1-(difference/@max_number_of_projects.to_f)) * 100
+      difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
+      (1-(difference/@max_number_of_projects.to_f)) * 100
     else
-      puts 'else'
       0.0
     end
   end
@@ -206,11 +202,9 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      puts 'if'
       p difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
       p (1-(difference/@max_total_commits.to_f)) * 100
     else
-      puts 'else'
       0.0
     end
   end
@@ -220,12 +214,10 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      puts 'if'
-      p difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
+      difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
       max_f = (@max_followers.to_f < 1  ? 1 : @max_followers.to_f)  
-      p (1-(difference/max_f)) * 100
+      (1-(difference/max_f)) * 100
     else
-      puts 'else'
       0.0
     end
   end
