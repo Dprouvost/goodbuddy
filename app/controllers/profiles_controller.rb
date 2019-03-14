@@ -39,6 +39,9 @@ class ProfilesController < ApplicationController
 
   def show
     # afficher le profile qui a le matching score le plus élevé (sauf le current_profile)
+    # @goals = Category.goals
+    # @main_socials = Category.main_socials
+    # @sub_socials = Category.sub_socials
     weighting = Weighting.new(weighting_params)
     @profile.weighting = weighting
     @profiles_scoring = ScoreMatchingService.new(

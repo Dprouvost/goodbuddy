@@ -10,8 +10,12 @@ class Profile < ApplicationRecord
     categories.where(stamp: "goal")
   end
 
+  def socials
+    categories.where(stamp: "social")
+  end
+  
   def main_socials_name
-    where(stamp: 'social', category_id: nil).map { |c| c.name }
+    categories.where(stamp: 'social', category_id: nil).map { |c| c.name }
   end
 
   def goals_name
