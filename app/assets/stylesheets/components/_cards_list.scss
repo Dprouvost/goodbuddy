@@ -2,7 +2,8 @@
   text-align: center;
   margin-top: 20px;
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 #align-all-div {
@@ -48,15 +49,23 @@
 }
 
 .position-score {
-  text-align: center;
-  margin-top: 20px;
+  position: relative;
+  // text-align: center;
+  // margin-top: 20px;
+  // margin-right: 15px;
 }
 
 .list-score {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin: auto;
+  float:right;
+
+  margin: 20px;
+
+  
+
+  // margin: auto;
   // border-left: 4px solid #3EC8AC;
   // border-right: 4px solid #4E90A4;
   // border-top: 4px solid #3EC8AC;
@@ -71,25 +80,41 @@
   // background-image: -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
   color: white;
   background: -webkit-linear-gradient(#3EC8AC, #4E90A4);
+  box-shadow: 0 0 3px rgb(100, 100, 100);
 }
 
 
   .list-score h4 {
   position: relative;
   margin-bottom: 0px !important;
-  top: 20px;
+  top: 31px;
+  left: 28px;
+  font-weight: 700;
 }
 
 .list-score p {
   position: relative;
   margin-bottom: 0px !important;
-  top: 22px;
+  top: 33px;
+  left: 20px;
+
+  font-size: 9px;
+  font-weight: 300;
 }
 
 .list-circle-goals {
   border: 1px solid black;
   border-radius: 20px;
   padding: 3px 8px;
+  font-size: 12px;
+  background-color: rgb(200, 200, 200);
+}
+
+.list-circle-goals-show {
+  margin: 6px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 20px;
   font-size: 12px;
   background-color: rgb(200, 200, 200);
 }
@@ -124,9 +149,10 @@
   margin: 10px;
   margin-left: 20px;
   padding: 20px;
-  height: 190px;
+  min-height: 150px;
   background-color: rgba(100, 100, 100, 0.2);
   border-radius: 3px;
+  box-shadow: 0 0 1px;
 }
 
 .list-description h3{
@@ -149,9 +175,10 @@
   margin: 10px;
   margin-right: 20px;
   padding: 20px;
-  height: 190px;
+  min-height: 200px;
   background-color: rgba(100, 100, 100, 0.2);
   border-radius: 3px;
+  box-shadow: 0 0 1px;
 }
 
 .goal-description h3{
@@ -169,4 +196,13 @@
   display: flex;
   justify-content: space-between;
   padding: 10px; 
+}
+
+.back-to-list {
+  width: 100%;
+  // display: flex;
+  // justify-content: space-between;
+  text-align: center;
+  padding: 10px; 
+  color: black !important;
 }

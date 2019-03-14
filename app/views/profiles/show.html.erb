@@ -1,5 +1,7 @@
 <div class="container">
+
   <div class="profile-border">
+
     <div class="row">
       <div class="col-6">
         <div class="profile-avatar inline-div">
@@ -10,51 +12,54 @@
           <h5 class="profile-avatar-city"><i class="fas fa-map-marker-alt"></i> <%= @profile.location %></h5>
         </div>
       </div>
-
       <div class="col-6">
         <div class="list-score-show">
           <h4><strong><%= number_to_percentage(@score[:total], precision: 0) %></strong></h4>
-          <p>Overall matching score</p>
+          <p>matching score</p>
         </div>
       </div>
     </div>
+
     <hr class="profile-list-line">
+
     <div class="row">
       <div class="col-12">
-        <h2><strong>Technical score details</strong></h2>
+        <h3><strong>Matching score - Technical details</strong></h3>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
-      
         <div class="cards-show">
           <div class="card language-charac2">
-          <p>Category</h3>
+            <p>Categories</p>
           </div>
           <div class="card language-charac2">
-          <%= @profile.nickname %>'s details</h3>
+            <p> <%= @profile.nickname%>'s details</p>
           </div>
           <div class="card language-charac2">
-          <%= @profile.nickname %>'s matching scores</h3>
+            <p> % of matching with you</p>
           </div>
-      
           <div class="card language-charac"> <strong>Languages</strong></div>
-          <div class="card language-charac">Top 3: <%= @profile.technical.language_1%> , <%= @profile.technical.language_2%>  and <%= @profile.technical.language_3%> </div>
+          <div class="card language-charac"> 
+          <li> Top 3: <strong> <%= @profile.technical.language_1%> </strong>, <strong><%= @profile.technical.language_2%> </strong> and <strong><%= @profile.technical.language_3%> </strong></li>
+          </div>
           <div class="card language-charac progressive-bar">
             <div class="progress-bar">
               <div class="percent" style="width: <%= number_to_percentage(@score[:language], precision: 0) %>;"><%= number_to_percentage(@score[:language], precision: 0) %> </div>
             </div>
           </div>
-
-          <div class="card style-charac"> <strong> Style</strong> </div>
+          <div class="card style-charac"> <strong> Working time slot</strong> </div>
             <% if @profile.technical.commit_slot == 1 %>
-              <% image = "Morning developer" %>
+              <% image = "Morning" %>
               <% elsif @profile.technical.commit_slot == 2 || @profile.technical.commit_slot == 3 %>
-              <% image = "Day developer" %>
+              <% image = "Day" %>
               <% else %>
-              <% image = "Night developer" %>
+              <% image = "Night" %>
               <% end %>
-          <div class="card style-charac"><%= image %></div>
+          <div class="card style-charac"> 
+              <li> <strong><%= image %></strong> web developer</li>
+          </div>
           <div class="card style-charac progressive-bar">
             <div class="progress-bar">
               <div class="percent" style="width: <%= number_to_percentage(@score[:style], precision: 0) %>;"><%= number_to_percentage(@score[:style], precision: 0) %> </div>
@@ -62,43 +67,65 @@
           </div>
           <div class="card experience-charac"> <strong> Experiences</strong></div>
           <div class="card experience-charac">
-            <li> Github account since <%= number_with_delimiter(@profile.technical.github_age) %> days</li>
-            <li><%= number_with_delimiter(@profile.technical.total_commits) %> commits on Github </li>
-            <li>Contributed to <%= number_with_delimiter(@profile.technical.number_of_projects) %> projects on Github </li>
-            <li> Has <%= number_with_delimiter(@profile.technical.followers) %> followers on Github</li>
+            <li> Github account since <strong><%= number_with_delimiter(@profile.technical.github_age) %> </strong>days</li>
+            <li><strong><%= number_with_delimiter(@profile.technical.total_commits) %> </strong>commits on Github </li>
+            <li>Contributed to <strong><%= number_with_delimiter(@profile.technical.number_of_projects) %> </strong>projects on Github </li>
+            <li> Has <strong><%= number_with_delimiter(@profile.technical.followers) %> </strong>followers on Github</li>
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
               <div class="percent" style="width: <%= number_to_percentage(@score[:experience], precision: 0) %>;"><%= number_to_percentage(@score[:experience], precision: 0) %> </div>
             </div>
           </div>
+          <div class="card experience-charac"> <strong> Socials</strong></div>
+          <div class="card experience-charac">
+            <li> Favorite music is <strong><%= @profile.socials.map(&:name)[0] %> </strong>  </li>
+            <li> Prefers watching movies @<strong><%= @profile.socials.map(&:name)[1] %> </strong></li>
+            <li> Likes <strong><%= @profile.socials.map(&:name)[2]%> </strong> food</li>
+            <li> Works in a <strong><%= @profile.socials.map(&:name)[3]%> </strong> environment </li>
+          </div>
+          <div class="card experience-charac progressive-bar">
+            <div class="progress-bar">
+              <div class="percent" style="width: <%= number_to_percentage(@score[:social], precision: 0) %>;"><%= number_to_percentage(@score[:social], precision: 0) %> </div>
+            </div>
+          </div>
+          <div class="card experience-charac"> <strong> Common interests with you</strong></div>
+          <div class="experience-charac-2">
+            <% @common_profile = @profile.goals & @current_user.profile.goals %>
+            <% @common_profile.map(&:name).each do |name| %>
+            <p class="inline-div list-circle-goals-show"> <%= name %></p>
+            <% end %>
+          </div>
+          <div class="card experience-charac progressive-bar">
+            <div class="progress-bar">
+              <div class="percent" style="width: <%= number_to_percentage(@score[:goal], precision: 0) %>;"><%= number_to_percentage(@score[:goal], precision: 0) %> </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     <hr class="profile-list-line">
+
     <div class="row">
-      <div class="col">
+      <div class="col list-description">
         <h3><strong>Description</strong></h3>
           <p><%= @profile.description %> </p>
       </div>
-      <div class="col">
-        <div>
-          <h3><strong>Interests</strong></h3>
-          <% @profile.goals_name.each do |name| %>
-            <p class="inline-div list-circle-goals"> <%= name %></p>
-            <% end %>
-        </div>
-      </div>
     </div>
+  
+
     <div class="row">
       <div class="col">
-          <div class="btn-show-detail">
-          <button class="btn show-button"> Send Message </button>  
+        <div class="btn-show-detail">
+          <a class="btn show-button" href="mailto:<%= @profile.user.email%>"  > Send Message </a>  
+        </div>
+        <div class="back-to-list">
+          <%= link_to "Back to list", profiles_path(@profile.id) + '?' + request.original_url.split('?')[1] %>
         </div>
       </div>
     </div>
-    <%= link_to profiles_path, "Back to list" %>
+    
+  
   </div>
 </div>
-
- 
