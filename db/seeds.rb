@@ -47,7 +47,7 @@ goals = [
   'Funding',
   'Gadgets',
   'Gaming',
-  'Policy'
+  'Policy',
   'Security',
   'Space',
   'Transportation',
