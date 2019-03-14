@@ -32,14 +32,14 @@
           <div class="goal-description">
             <h3><strong>Interests</strong></h3>
             <% hash[:profile].goals_name.each do |name| %>
-              <p class="inline-div list-circle-goals"><%= name %></p>
+              <p class="inline-div list-circle-goals"><%= name.capitalize %></p>
             <% end %>
           </div>
         </div>
         
       </div>
       <div class="btn-show-detail">
-          <%= link_to "Show details", profile_path(hash[:profile]) + '?' + request.original_url.split('?')[1], class:"btn show-button"%>
+          <%= link_to "Show details", profile_path(hash[:profile]), class:"btn show-button"%>
         </div>
     </div>
     <% end %>
