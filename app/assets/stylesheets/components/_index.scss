@@ -15,7 +15,9 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  background-image: linear-gradient(to right, #43CEA2 , #185A9D );
+  // background-image: linear-gradient(to right, #43CEA2 , #185A9D );
+  background-image: url("https://res.cloudinary.com/ds77w2ye3/image/upload/v1552582044/Component_1.png");
+  background-repeat: repeat;
 }
 
 @import "alert";
