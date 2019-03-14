@@ -108,7 +108,7 @@
   border-radius: 20px;
   padding: 3px 8px;
   font-size: 12px;
-  background-color: rgb(200, 200, 200);
+  background-color:white;
 }
 
 .list-circle-goals-show {
@@ -117,7 +117,9 @@
   border: 1px solid black;
   border-radius: 20px;
   font-size: 12px;
-  background-color: rgb(200, 200, 200);
+  background-color: white;
+  color: black;
+  font-weight: 700;
 }
 
 .list-city-name {
@@ -180,6 +182,11 @@
   background-color: rgba(100, 100, 100, 0.2);
   border-radius: 3px;
   box-shadow: 0 0 1px;
+}
+
+.goal-description-stamps{
+  display: flex;
+  justify-content: space-around;
 }
 
 .goal-description h3{

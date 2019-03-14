@@ -115,11 +115,28 @@
   margin-bottom: 1rem;
   box-shadow: 0 0 1px rgb(100, 100, 100);
     .percent {
-      background-image: linear-gradient(to right, #5ECEA2, #195C9D);
       height: 100px; 
       border-radius: 10px;
+      opacity: 0.6;
+
+      &.language {
+        background-color: #084C61;
+      }
+      &.style {
+        background-color: #3E5C76;
+      }
+      &.experience {
+        background-color: #2C8C99;
+      }
+      &.social {
+        background-color: #34D1BF;
+      }
+      &.goal {
+        background-color: #DBC2CF;
+      }
     }
 }
+
 
 .cards-show {
   display: grid;

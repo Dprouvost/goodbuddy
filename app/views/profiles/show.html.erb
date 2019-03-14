@@ -24,7 +24,7 @@
 
     <div class="row">
       <div class="col-12">
-        <h3><strong>Matching score - Technical details</strong></h3>
+        <h3><strong>Matching score details</strong></h3>
       </div>
     </div>
 
@@ -46,10 +46,10 @@
           </div>
           <div class="card language-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: <%= number_to_percentage(@score[:language], precision: 0) %>;"><%= number_to_percentage(@score[:language], precision: 0) %> </div>
+              <div class="percent language" style="width: <%= number_to_percentage(@score[:language], precision: 0) %>;"><%= number_to_percentage(@score[:language], precision: 0) %> </div>
             </div>
           </div>
-          <div class="card style-charac"> <strong> Working time slot</strong> </div>
+          <div class="card style-charac"> <strong> Usual working time slot</strong> </div>
             <% if @profile.technical.commit_slot == 1 %>
               <% image = "Morning" %>
               <% elsif @profile.technical.commit_slot == 2 || @profile.technical.commit_slot == 3 %>
@@ -62,7 +62,7 @@
           </div>
           <div class="card style-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: <%= number_to_percentage(@score[:style], precision: 0) %>;"><%= number_to_percentage(@score[:style], precision: 0) %> </div>
+              <div class="percent style" style="width: <%= number_to_percentage(@score[:style], precision: 0) %>;"><%= number_to_percentage(@score[:style], precision: 0) %> </div>
             </div>
           </div>
           <div class="card experience-charac"> <strong> Experiences</strong></div>
@@ -74,7 +74,7 @@
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: <%= number_to_percentage(@score[:experience], precision: 0) %>;"><%= number_to_percentage(@score[:experience], precision: 0) %> </div>
+              <div class="percent experience" style="width: <%= number_to_percentage(@score[:experience], precision: 0) %>;"><%= number_to_percentage(@score[:experience], precision: 0) %> </div>
             </div>
           </div>
           <div class="card experience-charac"> <strong> Socials</strong></div>
@@ -86,7 +86,7 @@
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: <%= number_to_percentage(@score[:social], precision: 0) %>;"><%= number_to_percentage(@score[:social], precision: 0) %> </div>
+              <div class="percent social" style="width: <%= number_to_percentage(@score[:social], precision: 0) %>;"><%= number_to_percentage(@score[:social], precision: 0) %> </div>
             </div>
           </div>
           <div class="card experience-charac"> <strong> Common interests with you</strong></div>
@@ -98,7 +98,7 @@
           </div>
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
-              <div class="percent" style="width: <%= number_to_percentage(@score[:goal], precision: 0) %>;"><%= number_to_percentage(@score[:goal], precision: 0) %> </div>
+              <div class="percent goal" style="width: <%= number_to_percentage(@score[:goal], precision: 0) %>;"><%= number_to_percentage(@score[:goal], precision: 0) %> </div>
             </div>
           </div>
         </div>
