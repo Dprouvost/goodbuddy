@@ -222,7 +222,8 @@ class ScoreMatchingService
     if technical && technical_user
       puts 'if'
       p difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
-      p (1-(difference/@max_followers.to_f)) * 100
+      max_f = (@max_followers.to_f < 1  ? 1 : @max_followers.to_f)  
+      p (1-(difference/max_f) * 100
     else
       puts 'else'
       0.0
