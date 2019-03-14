@@ -37,16 +37,19 @@
       <div class="row ">
         <div class="col-6">
           <div class="list-description">
-            <h3><strong>Description</strong></h3>
+            <h3><strong>What is <%=hash[:profile].nickname  %> looking for? </strong></h3>
             <p><%= hash[:profile].description%></p> 
           </div>
         </div>
         <div class="col-6 margin-bottom-goals">
           <div class="goal-description">
-            <h3><strong>Interests</strong></h3>
-            <% hash[:profile].goals_name.each do |name| %>
-              <p class="inline-div list-circle-goals"><%= name.capitalize %></p>
+            <h3><strong>Common interests with you</strong></h3>
+            <div class="goal-description-stamps">
+            <% @common_profile = hash[:profile].goals_name & @current_user.profile.goals_name %>
+            <% @common_profile.each do |name| %>
+            <p class="inline-div list-circle-goals"> <%= name.capitalize %></p>
             <% end %>
+            </div>
           </div>
         </div>
         

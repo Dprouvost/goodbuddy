@@ -40,18 +40,18 @@ socials_array.each do |social|
 end
 
 goals = [
-  'Gaming',
-  'Virtual Reality',
-  'Transportation',
-  'Finance', 
-  'Gadgets',
   'Apps',
-  'Funding',
-  'Space',
   'Biotech',
-  'Security',
   'Education',
+  'Finance', 
+  'Funding',
+  'Gadgets',
+  'Gaming',
   'Policy'
+  'Security',
+  'Space',
+  'Transportation',
+  'Virtual Reality',
 ]
 
 goals.each { |g| Category.create!(name: g, stamp: 'goal') }
