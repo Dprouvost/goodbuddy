@@ -16,14 +16,28 @@
 .profile-avatar-name {
   position: relative;
   top: 32px;
-  left:10px;
+  left:20px;
   font-weight: 700;
 }
 
 .profile-avatar-city {
   position: relative;
-  top: 21px;
-  left:10px;
+  top: 30px;
+  left:20px;
+  font-size: 14px;
+}
+
+.profile-avatar-name-2 {
+  position: relative;
+  top: 20px;
+  left:5px;
+  font-weight: 700;
+}
+
+.profile-avatar-city-2 {
+  position: relative;
+  top: 15px;
+  left:5px;
   font-size: 14px;
 }
 
@@ -34,6 +48,7 @@
   float:right;
   color: white;
   background: -webkit-linear-gradient(#3EC8AC, #4E90A4);
+  box-shadow: 0 0 3px rgb(100, 100, 100);
 }
 
 .list-score-show h4 {
@@ -50,7 +65,7 @@
   position: relative;
   text-align: center;
   vertical-align: middle;
-  top: 25px;
+  top: 30px;
 }
 
 .profile-border-bar {
@@ -60,8 +75,8 @@
 
 .profile-list-line {
   width: 50%;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .detailed-scoring-show {
@@ -96,8 +111,9 @@
   height: 25px;
   border-radius: 10px;
   width: 90%;
-  background-color: lightgrey;
+  background-color:rgb(250, 250, 250);
   margin-bottom: 1rem;
+  box-shadow: 0 0 1px rgb(100, 100, 100);
     .percent {
       background-image: linear-gradient(to right, #5ECEA2, #195C9D);
       height: 100px; 
@@ -107,7 +123,7 @@
 
 .cards-show {
   display: grid;
-  grid-template-columns: 1fr 3fr 2fr !important;
+  grid-template-columns: 2fr 3fr 2fr !important;
 }
 
 .language-charac {
@@ -116,12 +132,13 @@
   margin-bottom: 10px;
 }
 
-.language-charac2 {
+.language-charac2 p {
   background-color: #EAEAEA !important;
   vertical-align: text-bottom;
   background-color: white !important;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  margin: 0 !important;
 }
 
 .style-charac {
@@ -133,6 +150,10 @@
 .experience-charac {
   background-color: #EAEAEA !important;
   padding: 10px;
+  margin-bottom: 10px;
+}
+.experience-charac-2 {
+  background-color: #EAEAEA !important;
   margin-bottom: 10px;
 }
 

@@ -1,4 +1,4 @@
-<h1 class="x-profiles-found-title">See below the 15 most relevant profiles!</h1> 
+<h1 class="x-profiles-found-title">See below the 10 most compatible profiles!</h1> 
 
 <div class="loader-box">
       <div class="loader">
@@ -18,19 +18,19 @@
   <% @profiles_scoring.first(15).each do |hash| %>
     <div class="card-list-border">
       <div class="row">
-        <div class="col-8 profile-position">
+        <div class="col-6 profile-position">
           <div class="list-avatar inline-div">
             <img alt="avatar-large" src= "<%= hash[:profile].picture%>" />
           </div>
           <div class="list-username inline-div">
-            <h3><%= hash[:profile].nickname%></h3> 
-              <p style="font-size: 15px;" class="profile-avatar-city"><i class="fas fa-map-marker-alt"></i> Location: <%= hash[:profile].location %> </p>
+            <h3 class="profile-avatar-name-2"><%= hash[:profile].nickname%></h3> 
+              <p style="font-size: 15px;" class="profile-avatar-city-2"><i class="fas fa-map-marker-alt"></i> <%= hash[:profile].location %> </p>
           </div>
         </div>
-        <div class="col-4 position-score">
+        <div class="col-6 position-score">
           <div class="list-score">
-            <h4><strong>Score:</strong></h4>
-            <h4><%= number_to_percentage(hash[:score][:total], precision: 0)  %></h4>
+          <h4><%= number_to_percentage(hash[:score][:total], precision: 0)  %></h4>
+            <p><strong>matching score</strong></p>
           </div>
         </div>
       </div>
@@ -46,14 +46,14 @@
           <div class="goal-description">
             <h3><strong>Interests</strong></h3>
             <% hash[:profile].goals_name.each do |name| %>
-              <p class="inline-div list-circle-goals"><%= name %></p>
+              <p class="inline-div list-circle-goals"><%= name.capitalize %></p>
             <% end %>
           </div>
         </div>
         
       </div>
       <div class="btn-show-detail">
-          <%= link_to "Show details", profile_path(hash[:profile]) + '?' + request.original_url.split('?')[1], class:"btn show-button"%>
+          <%= link_to "Show details", profile_path(hash[:profile]), class:"btn show-button"%>
         </div>
     </div>
     <% end %>
