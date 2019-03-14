@@ -93,7 +93,7 @@
           <div class="experience-charac-2">
             <% @common_profile = @profile.goals & @current_user.profile.goals %>
             <% @common_profile.map(&:name).each do |name| %>
-            <p class="inline-div list-circle-goals-show"> <%= name %></p>
+            <p class="inline-div list-circle-goals-show"> <%= name.capitalize %></p>
             <% end %>
           </div>
           <div class="card experience-charac progressive-bar">
@@ -121,7 +121,7 @@
           <a class="btn show-button" href="mailto:<%= @profile.user.email%>"  > Send Message </a>  
         </div>
         <div class="back-to-list">
-          <%= link_to "Back to list", profiles_path(@profile.id) + '?' + request.original_url.split('?')[1] %>
+          <%= link_to "Back to list", profiles_path(@profile.id)%>
         </div>
       </div>
     </div>

@@ -1,20 +1,22 @@
 class ProfilesController < ApplicationController
 
-  before_action :set_profile, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
     # gestion de l'arriver depuis select_w
-    weighting = Weighting.new(weighting_params)
-    @profile.weighting = weighting
-    if @profile.save
-      @profiles_scoring = ScoreMatchingService.new(
-        social_weight: @profile.weighting.social,
-        style_weight: @profile.weighting.style,
-        language_weight: @profile.weighting.language,
-        experience_weight: @profile.weighting.experience,
-        current_user: current_user
-      ).call
+    if params[:weighting]
+      @profile = Profile.find(params[:id])
+      weighting = Weighting.new(weighting_params)
+      @profile.weighting = weighting
+      @profile.save
     end
+    @profiles_scoring = ScoreMatchingService.new(
+      social_weight: current_user.profile.weighting.social,
+      style_weight: current_user.profile.weighting.style,
+      language_weight: current_user.profile.weighting.language,
+      experience_weight: current_user.profile.weighting.experience,
+      current_user: current_user
+    ).call
     # fail
   end
 
@@ -42,13 +44,11 @@ class ProfilesController < ApplicationController
     # @goals = Category.goals
     # @main_socials = Category.main_socials
     # @sub_socials = Category.sub_socials
-    weighting = Weighting.new(weighting_params)
-    @profile.weighting = weighting
     @profiles_scoring = ScoreMatchingService.new(
-      social_weight: @profile.weighting.social,
-      style_weight: @profile.weighting.style,
-      language_weight: @profile.weighting.language,
-      experience_weight: @profile.weighting.experience,
+      social_weight: current_user.profile.weighting.social,
+      style_weight: current_user.profile.weighting.style,
+      language_weight: current_user.profile.weighting.language,
+      experience_weight: current_user.profile.weighting.experience,
       current_user: current_user
     ).call
     @score = @profiles_scoring.select { |h| h[:profile].id == @profile.id }.first[:score] #TODO make it better
@@ -73,4 +73,4 @@ class ProfilesController < ApplicationController
     def weighting_params
       params.require(:weighting).permit(:language, :style, :experience, :social)
     end
-end
+  end
