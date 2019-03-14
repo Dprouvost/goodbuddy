@@ -53,7 +53,7 @@ class ScoreMatchingService
       sc = score_social(profile.id)
       sl = score_language(profile.id)
       ss = score_style(profile.id)
-      se = (p score_github_age(profile.id) + p score_number_of_projects(profile.id) + p score_total_commits(profile.id) + p score_followers(profile.id))/4.0
+      se = (score_github_age(profile.id) + score_number_of_projects(profile.id) + score_total_commits(profile.id) + score_followers(profile.id))/4.0
       score = ((@goal_weight * sg) + (@social_weight * sc) + (@language_weight * sl) + (@style_weight * ss) + (@experience_weight * se)) / (@goal_weight + @social_weight + @language_weight + @style_weight + @experience_weight)
     end
     {
@@ -179,9 +179,10 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
       puts 'if'
-      difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
-      (1-(difference/@max_github_age.to_f)) * 100
+      p difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
+      p (1-(difference/@max_github_age.to_f)) * 100
     else
+      puts 'else'
       0.0
     end
   end
@@ -192,9 +193,10 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
       puts 'if'
-      difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
-      (1-(difference/@max_number_of_projects.to_f)) * 100
+      p difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
+      p (1-(difference/@max_number_of_projects.to_f)) * 100
     else
+      puts 'else'
       0.0
     end
   end
@@ -205,9 +207,10 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
       puts 'if'
-      difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
-      (1-(difference/@max_total_commits.to_f)) * 100
+      p difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
+      p (1-(difference/@max_total_commits.to_f)) * 100
     else
+      puts 'else'
       0.0
     end
   end
@@ -218,9 +221,10 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
       puts 'if'
-      difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
-      (1-(difference/@max_followers.to_f)) * 100
+      p difference = (Profile.find(id).technical.followers - @current_user.profile.technical.followers).abs.to_f
+      p (1-(difference/@max_followers.to_f)) * 100
     else
+      puts 'else'
       0.0
     end
   end
