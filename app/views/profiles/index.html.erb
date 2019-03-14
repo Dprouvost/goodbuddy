@@ -1,5 +1,3 @@
-<h1 class="x-profiles-found-title">See below the 10 most compatible profiles!</h1> 
-
 <div class="loader-box">
       <div class="loader">
             <div class="element-animation">
@@ -15,6 +13,7 @@
 </div>
 
 <div hidden class="container" id="align-all-div">
+  <h1 class="x-profiles-found-title">See below the 10 most compatible profiles!</h1> 
   <% @profiles_scoring.first(15).each do |hash| %>
     <div class="card-list-border">
       <div class="row">
@@ -62,6 +61,7 @@
 
 <script type="text/javascript">
   setTimeout(function () {
-    window.location.href
+    document.querySelector(".loader-box").hidden = true
+    document.getElementById("align-all-div").hidden = false
   }, 3000);
 </script>
