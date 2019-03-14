@@ -13,7 +13,7 @@
     <div class="cards-weighting">
       <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
       <div class="card cursor">
-            <input type="range" list="tickmarks" name="weighting[language]" min="0" max="2" step="0.01" class="border-0">
+            <input type="range" name="weighting[language]" min="0" max="2" step="0.01" class="border-0">
       </div>
       <div class="card important"><i class="far fa-thumbs-up"></i></div>
     </div>
@@ -33,7 +33,7 @@
     <div class="cards-weighting">
       <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
       <div class="card cursor">
-        <input type="range" name="weighting[experience]" min="0" max="2" step="0.01"class="border-0">
+        <input type="range" name="weighting[experience]" min="0" max="2" step="0.01" class="border-0">
       </div>
       <div class="card important"><i class="far fa-thumbs-up"></i></div>
     </div>
@@ -43,7 +43,7 @@
     <div class="cards-weighting">
       <div class="card not-important"><i class="far fa-thumbs-down"></i></div>
       <div class="card cursor">
-        <input type="range" name="weighting[social]" min="0" max="2" class="border-0">
+        <input type="range" name="weighting[social]" min="0" max="2" step="0.01" class="border-0">
       </div>
       <div class="card important"><i class="far fa-thumbs-up"></i></div>
     </div>
@@ -60,62 +60,5 @@
   </form>
 </div>
 
-<%# <datalist id="tickmarks">
- <option value="0" label="0">
- <option value="1" label=“1“>
- <option value="2" label="2">
-</datalist> %>
 
-  </div>
-
-  <form action="<%= profiles_path  %>" method="GET">
-  <input type="hidden" name="id" value="<%=@profile.id%>">
-  <div class="cards">
-    <div class="card-not-important"> Not important</div>
-      <div class="card">
-        <div class="range">
-          <h4 class="cat-title"> Common Languages </h4>
-          <input type="range" name="weighting[language]" min="0" max="2" class="border-0" style="width: 500px;">
-        </div>
-  
-    </div>
-    
-  <div class="card-important">Important</div>
-  </div>
-  <div class="cards">
-      <div class="card-not-important"></div>
-      <div class="card">
-          <div class="range">
-            <h4 class="cat-title"> Programming Style </h4>
-            <input type="range" name="weighting[style]" min="0" max="2" class="border-0" style="width: 300px;">
-          </div>
-      </div>
-      <div class="card-important"></div>
-    </div>
-
-    <div class="cards">
-        <div class="card-not-important"></div>
-        <div class="card">
-            <div class="range">
-              <h4 class="cat-title"> Common Languages </h4>
-              <input type="range" name="weighting[experience]" min="0" max="2" class="border-0" style="width: 500px;">
-            </div>
-        </div>
-        <div class="card-important"></div>
-      </div>
-      
-      <div class="cards">
-          <div class="card-not-important"></div>
-          <div class="card">
-              <div class="range">
-                <h4 class="cat-title"> Social compatibility </h4>
-                <input type="range" name="weighting[social]" min="0" max="2" class="border-0" style="width: 500px;">
-              </div>
-          </div>
-          <div class="card-important"></div>
-        </div>
-        <div class="submit-w">
-            <input type="submit" name="commit" value="Next" label="Next" class="btn submit-goals" data-disable-with="Next">
-            </div>
-  </form>
-</div> -->
+ 

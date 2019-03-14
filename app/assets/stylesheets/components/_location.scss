@@ -1,26 +1,24 @@
 .location-form{
 // align-content: center;
 // margin: auto;
-text-align: center;
-margin-top: 10vh;
+text-align: right;
+margin-top: 5vh;
 color: white;
 }
 
 
-.submit-form{
+.submit-form-location{
   border: 1.5px solid black;
   border-radius: 40px;
   font-size: 24px;
   font-weight: 300;
-  padding: 5px 15px;
   margin-top: 30px;
-  align-self: center;
+  padding: 2px 20px;
+  margin-top: 15px;
+  font-weight: 700 !important;
 }
 
-.submit-form:hover {
-    background-color: white;
+.submit-form-location:hover {
+  background-color: #5DCCA2;
+  color: white;
   }
-
-.button-sumbit-form{
-    align-content: center;
-}
