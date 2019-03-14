@@ -74,6 +74,7 @@ class ScoreMatchingService
   end
 
   def max_values
+    @profiles << @current_user.profile
     @profiles.each do |profile|
       if profile.technical
         profile.technical.github_age > @max_github_age ? @max_github_age = profile.technical.github_age : @max_github_age = @max_github_age
@@ -179,6 +180,7 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
        difference = (Profile.find(id).technical.github_age - @current_user.profile.technical.github_age).abs.to_f
+       max_f = (@max_github_age.to_f < 1  ? 1 : @max_github_age.to_f)  
        (1-(difference/@max_github_age.to_f)) * 100
     else
       0.0
@@ -191,6 +193,7 @@ class ScoreMatchingService
     technical_user = @current_user.profile.technical
     if technical && technical_user
       difference = (Profile.find(id).technical.number_of_projects - @current_user.profile.technical.number_of_projects).abs.to_f
+      max_f = (@max_number_of_projects.to_f < 1  ? 1 : @max_number_of_projects.to_f)  
       (1-(difference/@max_number_of_projects.to_f)) * 100
     else
       0.0
@@ -202,8 +205,9 @@ class ScoreMatchingService
     technical = profile.technical if profile
     technical_user = @current_user.profile.technical
     if technical && technical_user
-      p difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
-      p (1-(difference/@max_total_commits.to_f)) * 100
+      difference = (Profile.find(id).technical.total_commits - @current_user.profile.technical.total_commits).abs.to_f
+      max_f = (@max_total_commits.to_f < 1  ? 1 : @max_total_commits.to_f)  
+      (1-(difference/@max_total_commits.to_f)) * 100
     else
       0.0
     end

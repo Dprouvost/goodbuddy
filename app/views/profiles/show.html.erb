@@ -90,12 +90,14 @@
             </div>
           </div>
           <div class="card experience-charac"> <strong> Common interests with you</strong></div>
+
           <div class="experience-charac-2">
             <% @common_profile = @profile.goals & @current_user.profile.goals %>
             <% @common_profile.map(&:name).each do |name| %>
             <p class="inline-div list-circle-goals-show"> <%= name.capitalize %></p>
             <% end %>
           </div>
+          
           <div class="card experience-charac progressive-bar">
             <div class="progress-bar">
               <div class="percent goal" style="width: <%= number_to_percentage(@score[:goal], precision: 0) %>;"><%= number_to_percentage(@score[:goal], precision: 0) %> </div>
