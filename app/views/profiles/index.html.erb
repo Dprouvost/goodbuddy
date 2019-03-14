@@ -1,6 +1,20 @@
 <h1 class="x-profiles-found-title">See below the 15 most relevant profiles!</h1> 
 
-<div class="container" id="align-all-div">
+<div class="loader-box">
+      <div class="loader">
+            <div class="element-animation">
+            <img src="https://res.cloudinary.com/ds77w2ye3/image/upload/v1552564099/samples/Component.png" width="480" height="100";>
+            </div>
+      </div>
+      <ul class="labels">
+        <li class="label">PostgreSQL...</li>
+        <li class="label">JS...</li>
+        <li class="label">CSS...</li>
+        <li class="label">HTML...</li>
+      </ul>
+</div>
+
+<div hidden class="container" id="align-all-div">
   <% @profiles_scoring.first(15).each do |hash| %>
     <div class="card-list-border">
       <div class="row">
@@ -45,3 +59,9 @@
     <% end %>
 </div>
 
+
+<script type="text/javascript">
+  setTimeout(function () {
+    window.location.href
+  }, 3000);
+</script>
