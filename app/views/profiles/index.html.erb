@@ -14,7 +14,7 @@
 
 <div hidden class="container" id="align-all-div">
   <h1 class="x-profiles-found-title">See below the 10 most compatible profiles!</h1> 
-  <% @profiles_scoring.first(15).each do |hash| %>
+  <% @profiles_scoring.first(15).reject { |p| p[:profile].id == current_user.profile.id }.each do |hash| %>
     <div class="card-list-border">
       <div class="row">
         <div class="col-6 profile-position">
