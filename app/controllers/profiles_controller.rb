@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
       @profile.weighting = weighting
       @profile.save
     end
-    @profiles_scoring = ScoreMatchingService.new(
+    p @profiles_scoring = ScoreMatchingService.new(
       social_weight: current_user.profile.weighting.social,
       style_weight: current_user.profile.weighting.style,
       language_weight: current_user.profile.weighting.language,

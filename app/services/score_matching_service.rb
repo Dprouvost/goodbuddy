@@ -40,6 +40,7 @@ class ScoreMatchingService
     # puts ' '
     # puts ' '
     # puts ' '  
+    p @profiles
     @profiles.sort_by {|e| -e[:score][:total]}
   end
 
